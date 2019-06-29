@@ -6,61 +6,235 @@
         xmlns:local="clr-namespace:NBA_MK.View"
         mc:Ignorable="d"
         Title="PlayerWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="15,5,5,5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--Row 1-->
+        <!--Row 0-->
         
         <Label Content="Michal Jordan Statistics" Name="PlayerView_Label"
-               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-               FontSize="35" HorizontalAlignment="Center"/>
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+               FontSize="35" HorizontalAlignment="Center"
+               Margin="0,0,0,35"/>
         
-        <!--Row 2-->
+        <!--Row 1-->
         <!--Col 0-->
 
-        <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="#FF688CAF" Margin="5,5,0,5">
-            <StackPanel Width="100"
-            Grid.Row="1" Grid.Column="0"
-            Margin="5">
-                    <StackPanel.Resources>
-                        <Style TargetType="Label">
-                            <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Padding" Value="0,0,0,0"/>
-                        </Style>
-                    </StackPanel.Resources>
+        <Grid x:Name="InnerGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                </Style>
+            </Grid.Resources>
 
-                    <Label Content="Season"/>
-                    <ComboBox Name="Seasons_CBX" Margin="0,0,0,10"/>
+            <StackPanel Grid.Row="0" Grid.Column="0"
+                        Orientation="Horizontal" HorizontalAlignment="Right">
 
-                    <Label Content="Teams"/>
-                    <ComboBox Name="Teams_CBX"/>
-
+                <Label Content="Teams"/>
+                <ComboBox Name="Teams_CBX" Margin="5,0,15,0" Width="100"/>
             </StackPanel>
-        </Border>
 
-        <!--Row 2-->
+            <StackPanel Grid.Row="0" Grid.Column="1"
+                        Orientation="Horizontal">
+                <Label Content="Season" Margin="15,0,0,0"/>
+                <ComboBox Name="Seasons_CBX" Margin="5,0,5,0" Width="100"/>
+            </StackPanel>
+
+        </Grid>
+
+        <!--Row 2,3,4-->
+        <!--Col 0-->
+        
+        <StackPanel Grid.Row="2" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Games Played: "/>
+            <Label Content="0" Name="GP_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Games Started: "/>
+            <Label Content="0" Name="GS_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Minutes: "/>
+            <Label Content="0" Name="Min_LBL"/>
+
+        </StackPanel>
+        
+        
+        <!--Row 2,3,4-->
+        <!--Col 1-->        
+
+        <StackPanel Grid.Row="2" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Content="Field Goals Made: "/>
+            <Label Content="0" Name="FGM_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Content="Field Goals Attempted: "/>
+            <Label Content="0" Name="FGA_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Content="Field Goal Percentage: "/>
+            <Label Content="0%" Name="FGP_LBL"/>
+
+        </StackPanel>
+        
+        <!--Row 2,3,4-->
+        <!--Col 2-->
+
+
+        <StackPanel Grid.Row="2" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Label Content="3 Point Field Goals Made: "/>
+            <Label Content="0" Name="TPM_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Label Content="3 Point Field Goals Attempted: "/>
+            <Label Content="0" Name="TPA_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Label Content="3 Point Field Goal Percentage: "/>
+            <Label Content="0%" Name="TPP_LBL"/>
+
+        </StackPanel>
+        
+        <!--Row 5,6,7,8,9,10-->
+        <!--Col 0-->
+
+        <StackPanel Grid.Row="5" Grid.Column="0"
+                    Orientation="Horizontal"
+                    Margin="0,25,0,0">
+            <Label Content="Points: "/>
+            <Label Content="0" Name="PTS_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Assists: "/>
+            <Label Content="0" Name="Ast_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Steals: "/>
+            <Label Content="0" Name="Stl_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="8" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Blocks: "/>
+            <Label Content="0" Name="Blc_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Turnovers: "/>
+            <Label Content="0" Name="Tov_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="10" Grid.Column="0"
+                    Orientation="Horizontal">
+            <Label Content="Personal Foul: "/>
+            <Label Content="0" Name="PF_LBL"/>
+
+        </StackPanel>
+
+        <!--Row 5,6,7-->
         <!--Col 1-->
 
-        <DataGrid Name="PlayerGrid" Margin="5"
-            Grid.Row="1" Grid.Column="1">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="MPG" Width="*"/>
-                <DataGridTextColumn Header="FG%" Width="*"/>
-                <DataGridTextColumn Header="3P%" Width="*"/>
-                <DataGridTextColumn Header="FT%" Width="*"/>
-                <DataGridTextColumn Header="PPG" Width="*"/>
-                <DataGridTextColumn Header="RPG" Width="*"/>
-                <DataGridTextColumn Header="APG" Width="*"/>
-                <DataGridTextColumn Header="BPG" Width="*"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel Grid.Row="5" Grid.Column="1"
+                    Orientation="Horizontal"
+                    Margin="0,25,0,0">
+            <Label Content="Free Throws Made: "/>
+            <Label Content="0" Name="FTM_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Content="Free Throws Attempted: "/>
+            <Label Content="0" Name="FTA_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Label Content="Free Throws Percentage: "/>
+            <Label Content="0%" Name="FTP_LBL"/>
+
+        </StackPanel>
+
+        <!--Row 5,6,7-->
+        <!--Col 2-->
+
+        <StackPanel Grid.Row="5" Grid.Column="2"
+                    Orientation="Horizontal"
+                    Margin="0,25,0,0">
+            <Label Content="Offensive Rebounds: "/>
+            <Label Content="0" Name="OREB_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Label Content="Defensive Rebounds: "/>
+            <Label Content="0" Name="DREB_LBL"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Label Content="Rebounds: "/>
+            <Label Content="0" Name="Reb_LBL"/>
+
+        </StackPanel>
+
 
     </Grid>
 </Window>
