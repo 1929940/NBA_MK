@@ -7,6 +7,60 @@
         mc:Ignorable="d"
         Title="PlayerWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Row 1-->
         
+        <Label Content="Michal Jordan Statistics" Name="PlayerView_Label"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+               FontSize="35" HorizontalAlignment="Center"/>
+        
+        <!--Row 2-->
+        <!--Col 0-->
+
+        <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="#FF688CAF" Margin="5,5,0,5">
+            <StackPanel Width="100"
+            Grid.Row="1" Grid.Column="0"
+            Margin="5">
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Padding" Value="0,0,0,0"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Label Content="Season"/>
+                    <ComboBox Name="Seasons_CBX" Margin="0,0,0,10"/>
+
+                    <Label Content="Teams"/>
+                    <ComboBox Name="Teams_CBX"/>
+
+            </StackPanel>
+        </Border>
+
+        <!--Row 2-->
+        <!--Col 1-->
+
+        <DataGrid Name="PlayerGrid" Margin="5"
+            Grid.Row="1" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MPG" Width="*"/>
+                <DataGridTextColumn Header="FG%" Width="*"/>
+                <DataGridTextColumn Header="3P%" Width="*"/>
+                <DataGridTextColumn Header="FT%" Width="*"/>
+                <DataGridTextColumn Header="PPG" Width="*"/>
+                <DataGridTextColumn Header="RPG" Width="*"/>
+                <DataGridTextColumn Header="APG" Width="*"/>
+                <DataGridTextColumn Header="BPG" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>

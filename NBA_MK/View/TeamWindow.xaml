@@ -7,6 +7,78 @@
         mc:Ignorable="d"
         Title="TeamWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <!--Row 0-->
+
+        <Label Content="Chicago Bulls Team Roster"
+               FontSize="35" HorizontalAlignment="Center"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+        <!--Row 1-->
+        <!--Col 0-->
+
+        <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="#FF688CAF" Margin="5,5,0,5">
+        <StackPanel Width="100"
+            Grid.Row="1" Grid.Column="0"
+            Margin="5">
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="0,0,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+            
+            <Label Content="Search"/>
+            <TextBox Name="TeamFilter" Margin="0,0,0,10"
+                 HorizontalAlignment="Right" 
+                 Height="20" Width="100"/>
+
+            <Label Content="Role"/>
+            <ComboBox Name="Role_CBX" Margin="0,0,0,10">
+                <ComboBoxItem Content="Player" IsSelected="True"/>
+                <ComboBoxItem Content="Coach"/>
+            </ComboBox>
+
+            <Label Content="Season"/>
+            <ComboBox Name="Seasons_CBX" Margin="0,0,0,10"/>
+
+            <Label Content="Position"/>
+            <ComboBox Name="Position_CBX">
+                <ComboBoxItem Content="All" IsSelected="True"/>
+                <ComboBoxItem Content="Guard"/>
+                <ComboBoxItem Content="Center"/>
+                <ComboBoxItem Content="Forward"/>
+                <ComboBoxItem Content="Forward-Center"/>
+                <ComboBoxItem Content="Forward-Giard"/>
+            </ComboBox>
+
+        </StackPanel>
+        </Border>
+        
+        <!--Row 1-->
+        <!--Col 1-->
+
+        <DataGrid Name="TeamGrid" Margin="5"
+            Grid.Row="1" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="*"/>
+                <DataGridTextColumn Header="Number"/>
+                <DataGridTextColumn Header="Position"/>
+                <DataGridTextColumn Header="Height"/>
+                <DataGridTextColumn Header="Weight"/>
+                <DataGridTextColumn Header="Birth Date"/>
+                <DataGridTextColumn Header="Age"/>
+                <!--Need PlayerID-->
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
