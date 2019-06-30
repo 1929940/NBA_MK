@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,19 +26,19 @@ namespace NBA_MK.View
         {
             InitializeComponent();
 
-            BindTeams();
             BindSeasons();
+
 
         }
 
-        private async void BindTeams()
+        public async Task BindTeams(string season)
         {
-            var teams = await JsonReader.GetTeamsAsync();
+            var teams = await JsonReader.GetTeamsAsync(season);
 
             TeamGridWest.ItemsSource = teams.Where(t => t.Conference == "West");
             TeamGridEast.ItemsSource = teams.Where(t => t.Conference == "East");
         }
-        private async void BindSeasons()
+        private async Task BindSeasons()
         {
             var teamSeasons = await JsonReader.GetTeamSeasonsAsync();
 
@@ -45,10 +46,14 @@ namespace NBA_MK.View
 
             SeasonsGrid.ItemsSource = season;
 
-            // Grants me access to the first item in the collection
-            Console.WriteLine(SeasonsGrid.Items[0]);
-            //Console.WriteLine(SeasonsGrid.Columns[1].SetValue);
+            SeasonsGrid.SelectedIndex = 0;
+        }
 
+        private void SeasonsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(SeasonsGrid.SelectedItem.ToString());
+
+            BindTeams(SeasonsGrid.SelectedItem.ToString());
 
         }
     }
