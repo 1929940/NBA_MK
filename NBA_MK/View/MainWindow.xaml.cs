@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using NBA_Lib.JsonReader;
+using NBA_Lib.JsonReader.JsonObjects;
 
 namespace NBA_MK.View
 {
@@ -24,16 +26,28 @@ namespace NBA_MK.View
             InitializeComponent();
 
             BindTeams();
-            BindTeams();
+            BindSeasons();
 
         }
 
         private async void BindTeams()
         {
-            var teams = await NBA_Lib.JsonReader.JsonReader.GetTeamsAsync();
+            var teams = await JsonReader.GetTeamsAsync();
 
             TeamGridWest.ItemsSource = teams.Where(t => t.Conference == "West");
             TeamGridEast.ItemsSource = teams.Where(t => t.Conference == "East");
+        }
+        private async void BindSeasons()
+        {
+            var teamSeasons = await JsonReader.GetTeamSeasonsAsync();
+
+            var season = TeamSeasons.GetSeasonsList(teamSeasons);
+
+            SeasonsGrid.ItemsSource = season;
+
+            // Grants me access to the first item in the collection
+            Console.WriteLine(SeasonsGrid.Items[0]);
+            //Console.WriteLine(SeasonsGrid.Columns[1].SetValue);
 
 
         }

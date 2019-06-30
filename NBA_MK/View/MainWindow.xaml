@@ -78,13 +78,23 @@
 
         <DataGrid Name="SeasonsGrid" MinWidth="100"
             Grid.Row="2" Grid.Column="1"
-            Margin="5,27,5,6">
+            Margin="5,27,5,6" AlternatingRowBackground="WhiteSmoke"
+            AutoGenerateColumns="False" HeadersVisibility="Column"
+            IsReadOnly="True" GridLinesVisibility="None"  
+            SelectionMode="Single" Background="White">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="Margin" Value="0,1,0,1"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Seasons" MinWidth="60"  Width="*"/>
-                <DataGridTemplateColumn MinWidth="40">
+                <DataGridTextColumn Header="Seasons" MinWidth="60" Width="*" Binding="{Binding}"/>
+                <DataGridTemplateColumn MinWidth="25">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton GroupName="Seasons"/>
+                            <RadioButton GroupName="SeasonsGroup"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

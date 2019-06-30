@@ -12,25 +12,11 @@ namespace NBA_Lib.JsonReader
 {
     public static class JsonReader
     {
-        public static void GetTeams()
-        {
-            WebClient wc1 = new WebClient();
-
-            var link = "http://stats.nba.com/stats/leaguestandingsv3?LeagueID=00&Season=2015-16&SeasonType=Regular+Season";
-            wc1.Headers.Add("accept-encoding", "Accepflate, sdch");
-            wc1.Headers.Add("Accept-Language", "en");
-            wc1.Headers.Add("origin", "http://stats.nba.com");
-            //wc1.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
-            var json1 = wc1.DownloadString(link);
-
-            var output = JsonConvert.DeserializeObject<TeamRootObject>(json1);
-        }
-
         public static async Task<List<Team>> GetTeamsAsync()
         {
             using (var client = new HttpClient())
             {
-                string link = "http://stats.nba.com/stats/leaguestandingsv3?LeagueID=00&Season=2015-16&SeasonType=Regular+Season";
+                string link = "http://stats.nba.com/stats/leaguestandingsv3?LeagueID=00&Season=2018-19&SeasonType=Regular+Season";
 
                 client.DefaultRequestHeaders.Add("accept-encoding", "Accepflate, sdch");
                 client.DefaultRequestHeaders.Add("Accept-Language", "en");
@@ -43,5 +29,24 @@ namespace NBA_Lib.JsonReader
                 return output.ExtractTeams();
             }
         }
+        public static async Task<List<TeamSeasons>> GetTeamSeasonsAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                string link = "https://stats.nba.com/stats/commonteamyears?LeagueID=00";
+
+                client.DefaultRequestHeaders.Add("accept-encoding", "Accepflate, sdch");
+                client.DefaultRequestHeaders.Add("Accept-Language", "en");
+                client.DefaultRequestHeaders.Add("origin", "http://stats.nba.com");
+
+                string content = await client.GetStringAsync(link);
+
+                TeamSeasonsRootObject output = JsonConvert.DeserializeObject<TeamSeasonsRootObject>(content);
+
+                return output.ExtractSeasons();
+            }
+
+        }
+
     }
 }
