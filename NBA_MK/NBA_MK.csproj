@@ -109,5 +109,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NBA_Lib\NBA_Lib.csproj">
+      <Project>{b386bc3d-577e-4660-a95d-c31e865341ef}</Project>
+      <Name>NBA_Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

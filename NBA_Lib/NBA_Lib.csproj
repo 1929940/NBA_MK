@@ -44,14 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonReader\JsonObjects\Team.cs" />
+    <Compile Include="JsonReader\JsonObjects\TeamResultSets.cs" />
+    <Compile Include="JsonReader\JsonObjects\TeamRootObject.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="JsonReader\JsonObjects\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

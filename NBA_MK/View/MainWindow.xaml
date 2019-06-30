@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="485" Width="800">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,26 +26,51 @@
         <TabControl Grid.Row="2" Grid.Column="0" BorderThickness="0"
             Margin="5" Padding="0,0,0,0">
             <TabItem Header="West" Width="100">
-                <DataGrid Name="TeamGridWest">
+                
+                <DataGrid Name="TeamGridWest" AlternatingRowBackground="WhiteSmoke"
+                  AutoGenerateColumns="False" HeadersVisibility="Column"
+                  IsReadOnly="True" GridLinesVisibility="None"  
+                  SelectionMode="Single" Background="White">
+
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Margin" Value="0,1,0,1"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Standing"/>
-                        <DataGridTextColumn Header="Team Name" Width="*"/>
-                        <DataGridTextColumn Header="Win" MinWidth="50"/>
-                        <DataGridTextColumn Header="Loss" MinWidth="50"/>
-                        <DataGridTextColumn Header="W-L" MinWidth="50"/>
-                        <DataGridTextColumn Header="Streak" MinWidth="50"/>
+                        <DataGridTextColumn Header="Standing" Binding="{Binding Standing}"/>
+                        <DataGridTextColumn Header="Team Name" Width="*" Binding="{Binding TeamName}"/>
+                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}"/>
+                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}"/>
+                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}"/>
+                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                
             </TabItem>
             <TabItem Header="East" Width="100">
-                <DataGrid Name="TeamGridEast">
+                
+                <DataGrid Name="TeamGridEast" AlternatingRowBackground="WhiteSmoke"
+                  AutoGenerateColumns="False" HeadersVisibility="Column"
+                  IsReadOnly="True" GridLinesVisibility="None"  
+                  SelectionMode="Single" Background="White">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Margin" Value="0,1,0,1"/>
+                        </Style>
+                    </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Standing"/>
-                        <DataGridTextColumn Header="Name" Width="*"/>
-                        <DataGridTextColumn Header="Win" MinWidth="50"/>
-                        <DataGridTextColumn Header="Loss" MinWidth="50"/>
-                        <DataGridTextColumn Header="W-L" MinWidth="50"/>
-                        <DataGridTextColumn Header="Streak" MinWidth="50"/>
+                        <DataGridTextColumn Header="Standing" Binding="{Binding Standing}"/>
+                        <DataGridTextColumn Header="Team Name" Width="*" Binding="{Binding TeamName}"/>
+                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}"/>
+                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}"/>
+                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}"/>
+                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -53,7 +78,7 @@
 
         <DataGrid Name="SeasonsGrid" MinWidth="100"
             Grid.Row="2" Grid.Column="1"
-            Margin="5,28,5,6">
+            Margin="5,27,5,6">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Seasons" MinWidth="60"  Width="*"/>
                 <DataGridTemplateColumn MinWidth="40">
