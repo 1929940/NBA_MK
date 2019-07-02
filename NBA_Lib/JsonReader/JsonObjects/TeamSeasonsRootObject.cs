@@ -10,13 +10,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        public class ResultSet
-        {
-            public string Name { get; set; }
-            public List<string> Headers { get; set; }
-            public List<List<object>> RowSet { get; set; }
-        }
-
         public List<TeamSeasons> ExtractSeasons()
         {
             var output = ResultSets[0].RowSet.Select(s => new TeamSeasons()

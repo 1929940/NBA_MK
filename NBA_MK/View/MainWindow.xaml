@@ -30,16 +30,19 @@
                 <DataGrid Name="TeamGridWest" AlternatingRowBackground="WhiteSmoke"
                   AutoGenerateColumns="False" HeadersVisibility="Column"
                   IsReadOnly="True" GridLinesVisibility="None"  
-                  SelectionMode="Single" Background="White">
+                  SelectionMode="Single" Background="White"
+                  MouseDoubleClick="TeamGridWest_MouseDoubleClick"
+                  RowHeight="20">
 
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                            <Setter Property="Margin" Value="0,1,0,1"/>
                         </Style>
                     </DataGrid.Resources>
-                    
+
+
+
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Standing" Binding="{Binding Standing}"/>
                         <DataGridTextColumn Header="Team Name" Width="*" Binding="{Binding TeamName}"/>
@@ -56,12 +59,13 @@
                 <DataGrid Name="TeamGridEast" AlternatingRowBackground="WhiteSmoke"
                   AutoGenerateColumns="False" HeadersVisibility="Column"
                   IsReadOnly="True" GridLinesVisibility="None"  
-                  SelectionMode="Single" Background="White">
+                  SelectionMode="Single" Background="White"
+                  MouseDoubleClick="TeamGridEast_MouseDoubleClick"
+                  RowHeight="20">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                            <Setter Property="Margin" Value="0,1,0,1"/>
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
@@ -77,7 +81,7 @@
         </TabControl>
 
         <DataGrid Name="SeasonsGrid" MinWidth="100"
-            Grid.Row="2" Grid.Column="1"
+            Grid.Row="2" Grid.Column="1" RowHeight="20"
             Margin="5,27,5,6" AlternatingRowBackground="WhiteSmoke"
             AutoGenerateColumns="False" HeadersVisibility="Column"
             IsReadOnly="True" GridLinesVisibility="None"  
@@ -87,7 +91,6 @@
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                    <Setter Property="Margin" Value="0,0,0,1"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>

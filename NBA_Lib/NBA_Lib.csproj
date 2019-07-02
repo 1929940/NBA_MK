@@ -44,11 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonReader\JsonObjects\ResultSet.cs" />
     <Compile Include="JsonReader\JsonObjects\Team.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamResultSets.cs" />
+    <Compile Include="JsonReader\JsonObjects\TeamRooster.cs" />
+    <Compile Include="JsonReader\JsonObjects\TeamRoosterRootObject.cs" />
     <Compile Include="JsonReader\JsonObjects\TeamRootObject.cs" />
     <Compile Include="JsonReader\JsonObjects\TeamSeasons.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamSeasonsResultSet.cs" />
     <Compile Include="JsonReader\JsonObjects\TeamSeasonsRootObject.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

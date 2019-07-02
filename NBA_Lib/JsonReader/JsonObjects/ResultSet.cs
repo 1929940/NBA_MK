@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace NBA_Lib.JsonReader.JsonObjects
 {
-    public class TeamResultSet
+    public class ResultSet
     {
-        public string name { get; set; }
-        public List<string> headers { get; set; }
-        public List<List<object>> rowSet { get; set; }
+        public List<string> Headers { get; set; }
+        public List<List<object>> RowSet { get; set; }
     }
 }

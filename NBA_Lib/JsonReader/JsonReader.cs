@@ -41,7 +41,6 @@ namespace NBA_Lib.JsonReader
                 client.DefaultRequestHeaders.Add("origin", "http://stats.nba.com");
                 client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
 
-
                 string content = await client.GetStringAsync(link);
 
                 TeamSeasonsRootObject output = JsonConvert.DeserializeObject<TeamSeasonsRootObject>(content);
@@ -49,6 +48,24 @@ namespace NBA_Lib.JsonReader
                 return output.ExtractSeasons();
             }
 
+        }
+        public static async Task<List<TeamRooster>> GetTeamRosterAsync(int teamID, string season)
+        {
+            using (var client = new HttpClient())
+            {
+                string link = String.Format("https://stats.nba.com/stats/commonteamroster?LeagueID=00&Season={0}&TeamID={1}", season, teamID);
+
+                client.DefaultRequestHeaders.Add("accept-encoding", "Accepflate, sdch");
+                client.DefaultRequestHeaders.Add("Accept-Language", "en");
+                client.DefaultRequestHeaders.Add("origin", "http://stats.nba.com");
+                //client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
+
+                string content = await client.GetStringAsync(link);
+
+                TeamRoosterRootObject output = JsonConvert.DeserializeObject<TeamRoosterRootObject>(content);
+
+                return output.ExtractRooster();
+            }
         }
 
     }

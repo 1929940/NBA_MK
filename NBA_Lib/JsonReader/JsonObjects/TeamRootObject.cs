@@ -8,11 +8,11 @@ namespace NBA_Lib.JsonReader.JsonObjects
 {
     public class TeamRootObject
     {
-        public List<TeamResultSet> ResultSets { get; set; }
+        public List<ResultSet> ResultSets { get; set; }
 
         public List<Team> ExtractTeams()
         {
-            var output = ResultSets[0].rowSet.Select(s => new Team()
+            var output = ResultSets[0].RowSet.Select(s => new Team()
             {
                 TeamID = Convert.ToInt32(s[2]),
                 TeamName = (s[3] + " " + s[4]),
