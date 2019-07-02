@@ -12,11 +12,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
         public List<TeamRooster> ExtractRooster()
         {
-
-
-            //Add coaches
-
-
             var players = ResultSets[0].RowSet.Select(r => new TeamRooster()
             {
                 PlayerName = r[3].ToString(),

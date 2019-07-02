@@ -28,12 +28,25 @@ namespace NBA_MK.View
 
             BindSeasons();
 
-            testero();
+            //testero();
+
+            //JsonReader.GetPlayerProfile(2544);
+
+            //testeroPlayero();
 
         }
         public async Task testero()
         {
             var test = await JsonReader.GetTeamRosterAsync(1610612739, "2018-19");
+
+            foreach (var item in test)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        public async Task testeroPlayero()
+        {
+            var test = await JsonReader.GetPlayerProfile(2544);
 
             foreach (var item in test)
             {
