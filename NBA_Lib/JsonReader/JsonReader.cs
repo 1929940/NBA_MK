@@ -27,7 +27,7 @@ namespace NBA_Lib.JsonReader
 
                 TeamRootObject output = JsonConvert.DeserializeObject<TeamRootObject>(content);
 
-                return output.ExtractTeams();
+                return output.ExtractTeams(season);
             }
         }
         public static async Task<List<TeamSeasons>> GetTeamSeasonsAsync()
@@ -58,7 +58,7 @@ namespace NBA_Lib.JsonReader
                 client.DefaultRequestHeaders.Add("accept-encoding", "Accepflate, sdch");
                 client.DefaultRequestHeaders.Add("Accept-Language", "en");
                 client.DefaultRequestHeaders.Add("origin", "http://stats.nba.com");
-                //client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
+                client.DefaultRequestHeaders.Add("user-agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1");
 
                 string content = await client.GetStringAsync(link);
 

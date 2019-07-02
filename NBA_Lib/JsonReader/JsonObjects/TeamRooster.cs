@@ -20,7 +20,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
         public string Height { get; set; }
         public int? Weight { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public int? Age { get; set; }
         public int? PlayerID { get; set; }
         public string Role { get; set; }

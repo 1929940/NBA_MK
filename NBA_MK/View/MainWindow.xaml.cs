@@ -20,8 +20,10 @@ namespace NBA_MK.View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
+        List<TeamSeasons> teamSeasons;
         public MainWindow()
         {
             InitializeComponent();
@@ -71,7 +73,7 @@ namespace NBA_MK.View
             // Team ID selected
             // This will get passed down to team stats (w2)
             // needed to show in what years the chosen team was active
-            var teamSeasons = await JsonReader.GetTeamSeasonsAsync();
+            teamSeasons = await JsonReader.GetTeamSeasonsAsync();
 
             var season = TeamSeasons.GetSeasonsList(teamSeasons);
 
@@ -82,20 +84,26 @@ namespace NBA_MK.View
 
         private void SeasonsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(SeasonsGrid.SelectedItem.ToString());
-
             BindTeams(SeasonsGrid.SelectedItem.ToString());
         }
 
-        private void TeamGridEast_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void TeamGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //Edit Cell Height - Makes clicking clunky
-            Console.WriteLine((TeamGridEast.SelectedItem as Team).TeamID);
-        }
+            Team team;
 
-        private void TeamGridWest_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+            if ((sender as DataGrid).Name == "TeamGridWest")
+            {
+                team = (Team)TeamGridWest.SelectedItem;
+            }
+            else
+            {
+                team = (Team)TeamGridEast.SelectedItem;
+            }
 
+            List<string> tmp = TeamSeasons.GetSeasonsList(teamSeasons.Where(p => p.TeamID == team.TeamID).ToList());
+
+            TeamWindow teamWindow = new TeamWindow(SeasonsGrid.SelectedItem.ToString(), team, tmp);
+            teamWindow.ShowDialog();
         }
     }
 }

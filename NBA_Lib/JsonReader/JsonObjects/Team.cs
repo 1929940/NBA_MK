@@ -15,7 +15,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public int Wins { get; set; }
         public int Losses { get; set; }
         public double Ratio { get; set; }
-        public string Streak { get; set; }
+        public int? Streak { get; set; }
 
         public override string ToString()
         {

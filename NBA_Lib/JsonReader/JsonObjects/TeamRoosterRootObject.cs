@@ -19,7 +19,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 Position = r[5].ToString(),
                 Height = r[6].ToString(),
                 Weight = Convert.ToInt32(r[7]),
-                BirthDate = r[8].ToString(),
+                BirthDate = DateTime.Parse(r[8].ToString()),
                 Age = Convert.ToInt32(r[9]),
                 PlayerID = Convert.ToInt32(r[12]),
                 Role = "Player"

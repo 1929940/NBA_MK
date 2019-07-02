@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="485" Width="800">
+        Title="MainWindow" Height="501" Width="800">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -31,7 +31,7 @@
                   AutoGenerateColumns="False" HeadersVisibility="Column"
                   IsReadOnly="True" GridLinesVisibility="None"  
                   SelectionMode="Single" Background="White"
-                  MouseDoubleClick="TeamGridWest_MouseDoubleClick"
+                  MouseDoubleClick="TeamGrid_MouseDoubleClick"
                   RowHeight="20">
 
                     <DataGrid.Resources>
@@ -60,7 +60,7 @@
                   AutoGenerateColumns="False" HeadersVisibility="Column"
                   IsReadOnly="True" GridLinesVisibility="None"  
                   SelectionMode="Single" Background="White"
-                  MouseDoubleClick="TeamGridEast_MouseDoubleClick"
+                  MouseDoubleClick="TeamGrid_MouseDoubleClick"
                   RowHeight="20">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridCell}">
