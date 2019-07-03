@@ -27,7 +27,7 @@ namespace NBA_MK.View
         {
             InitializeComponent();
 
-            BindControls(selectedPlayerID);
+            BindControls(selectedPlayerID, franchises);
 
             PlayerView_Label.Content = selectedPlayersName;
 
@@ -40,13 +40,15 @@ namespace NBA_MK.View
             Console.WriteLine(selectedTeamsName);
         }
 
-        private async Task BindControls(int id)
+        private async Task BindControls(int id, List<Franchise> franchises)
         {
             playerProfiles = await JsonReader.GetPlayerProfile(id);
 
             Seasons_CBX.ItemsSource = PlayerProfile.GetSeasons(playerProfiles);
 
-            Teams_CBX.ItemsSource = PlayerProfile.GetTeamIDs(playerProfiles);
+            var teams = PlayerProfile.GetTeamIDs(playerProfiles);
+
+            Teams_CBX.ItemsSource = teams.Select(f => Team.TranslateIdIntoName(f, franchises));
         }
         private void BindStats(string season)
         {

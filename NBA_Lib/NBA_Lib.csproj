@@ -53,8 +53,6 @@
     <Compile Include="JsonReader\JsonObjects\TeamRooster.cs" />
     <Compile Include="JsonReader\JsonObjects\TeamRoosterRootObject.cs" />
     <Compile Include="JsonReader\JsonObjects\TeamRootObject.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamSeasons.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamSeasonsRootObject.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
