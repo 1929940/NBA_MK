@@ -21,22 +21,25 @@ namespace NBA_MK.View
     /// </summary>
     public partial class TeamWindow : Window
     {
-        //string season;
-        int teamID;
-        public TeamWindow(string season, Team team, List<string> seasons)
+        readonly int teamID;
+        readonly string teamName;
+        readonly List<Franchise> franchiseData;
+
+        public TeamWindow(Team team, List<string> seasons, string selectedSeason, List<Franchise> franchises)
         {
             InitializeComponent();
 
             //season = this.season;
             teamID = team.TeamID;
+            teamName = team.TeamName;
 
-            //Blad logiczny? Filter by Season, why? Nie. Zostaje tak jak jest w planie.
+            franchiseData = franchises;
 
-            MainLabel.Content = team.TeamName + " Team Rooster";
+            MainLabel.Content = teamName + " Team Rooster";
 
             //BindRooster(team.TeamID, season);
 
-            BindSeasons(seasons, season);
+            BindSeasons(seasons, selectedSeason);
         }
         private async Task BindRooster(int teamID, string season)
         {
@@ -53,14 +56,20 @@ namespace NBA_MK.View
 
         private void TeamRoosterGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            PlayerWindow playerWindow = new PlayerWindow();
+            if ((TeamRoosterGrid.SelectedItem as TeamRooster).Role == "Coach") return;
+
+            int playerID = (int)(TeamRoosterGrid.SelectedItem as TeamRooster).PlayerID;
+
+            string playerName = (TeamRoosterGrid.SelectedItem as TeamRooster).PlayerName;
+
+            string selectedSeason = Seasons_CBX.SelectedValue.ToString();
+
+            PlayerWindow playerWindow = new PlayerWindow(playerID, playerName, teamName, selectedSeason, franchiseData);
             playerWindow.ShowDialog();
         }
 
         private void Seasons_CBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(Seasons_CBX.SelectedValue);
-
             BindRooster(teamID, Seasons_CBX.SelectedValue.ToString());
         }
     }

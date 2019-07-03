@@ -38,6 +38,25 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public int Turnover { get; set; }
         public int PersonalFouls { get; set; }
 
+        public static List<string> GetSeasons(List<PlayerProfile> list)
+        {
+            List<string> output;
+
+            output = list.Select(p => p.SeasonID).ToList();
+            output.Add("All");
+
+            return output;
+        }
+
+        public static List<int> GetTeamIDs(List<PlayerProfile> list)
+        {
+            List<int> output;
+
+            output = list.Select(p => p.TeamID).Distinct().ToList();
+
+            return output;
+        }
+
         public override string ToString()
         {
             string output = String.Format($"SeasonID: {SeasonID}\n" +
@@ -67,4 +86,9 @@ namespace NBA_Lib.JsonReader.JsonObjects
             return output;
         }
     }
+
+
+
+
+
 }

@@ -17,6 +17,13 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public double Ratio { get; set; }
         public int? Streak { get; set; }
 
+        public static string TranslateIdIntoName(int id, List<Team> teams)
+        {
+            string output = teams.FirstOrDefault(t => t.TeamID == id).TeamName;
+
+            return output;
+        }
+
         public override string ToString()
         {
             string output = String.Format("TeamId: {0} \n" +

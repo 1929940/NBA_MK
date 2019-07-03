@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
         mc:Ignorable="d"
-        Title="PlayerWindow" Height="450" Width="800">
+        Title="PlayerWindow" Height="450" Width="800"
+        Name="PlayerStatsWindow">
     <Grid Margin="15,5,5,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -60,7 +61,7 @@
             <StackPanel Grid.Row="0" Grid.Column="1"
                         Orientation="Horizontal">
                 <Label Content="Season" Margin="15,0,0,0"/>
-                <ComboBox Name="Seasons_CBX" Margin="5,0,5,0" Width="100"/>
+                <ComboBox Name="Seasons_CBX" Margin="5,0,5,0" Width="100" SelectionChanged="Seasons_CBX_SelectionChanged"/>
             </StackPanel>
 
         </Grid>

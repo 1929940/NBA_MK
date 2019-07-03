@@ -10,10 +10,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        //var players = ResultSets[0].RowSet.Select(r => new TeamRooster()
-
-        
-
         public List<PlayerProfile> ExtractPlayerStats()
         {
             var perSeason = ResultSets[0].RowSet.Select(p => new PlayerProfile()

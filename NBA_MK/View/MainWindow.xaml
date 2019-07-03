@@ -89,19 +89,19 @@
             SelectionChanged="SeasonsGrid_SelectionChanged">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger  Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                        </Trigger>
+                    </Style.Triggers>
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Seasons" MinWidth="75" Width="*" Binding="{Binding}"/>
-                <!--<DataGridTemplateColumn MinWidth="25">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <RadioButton GroupName="SeasonsGroup"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
 

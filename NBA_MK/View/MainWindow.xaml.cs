@@ -23,12 +23,15 @@ namespace NBA_MK.View
     /// 
     public partial class MainWindow : Window
     {
-        List<TeamSeasons> teamSeasons;
+        //List<Team> teams;
+        List<Franchise> franchiseData;
         public MainWindow()
         {
             InitializeComponent();
 
             BindSeasons();
+
+            testFranchise();
 
             //testero();
 
@@ -55,13 +58,18 @@ namespace NBA_MK.View
                 Console.WriteLine(item);
             }
         }
+        public async Task testFranchise()
+        {
+            var test = await JsonReader.GetFranchiseDataAsync();
 
+            foreach (var item in test)
+            {
+                Console.WriteLine(item);
+            }
+        }
 
         public async Task BindTeams(string season)
         {
-            // This will get passed down to player stats window (w3)
-            // needed to convert teamid into teamname
-            // Could cut this to have teamid/name but will pass down all for now
             var teams = await JsonReader.GetTeamsAsync(season);
 
             TeamGridWest.ItemsSource = teams.Where(t => t.Conference == "West");
@@ -69,13 +77,9 @@ namespace NBA_MK.View
         }
         private async Task BindSeasons()
         {
-            // An single team season will get passed down based on
-            // Team ID selected
-            // This will get passed down to team stats (w2)
-            // needed to show in what years the chosen team was active
-            teamSeasons = await JsonReader.GetTeamSeasonsAsync();
+            franchiseData = await JsonReader.GetFranchiseDataAsync();
 
-            var season = TeamSeasons.GetSeasonsList(teamSeasons);
+            var season = Franchise.GetActiveSeasonsList(franchiseData);
 
             SeasonsGrid.ItemsSource = season;
 
@@ -90,19 +94,21 @@ namespace NBA_MK.View
         private void TeamGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Team team;
+            string selectedSeason = SeasonsGrid.SelectedItem.ToString();
 
             if ((sender as DataGrid).Name == "TeamGridWest")
             {
-                team = (Team)TeamGridWest.SelectedItem;
+                team = (TeamGridWest.SelectedItem as Team);
             }
             else
             {
-                team = (Team)TeamGridEast.SelectedItem;
+                team = (TeamGridEast.SelectedItem as Team);
             }
 
-            List<string> tmp = TeamSeasons.GetSeasonsList(teamSeasons.Where(p => p.TeamID == team.TeamID).ToList());
+            List<string> selectedTeamSeasons = 
+                Franchise.GetActiveSeasonsList(franchiseData.Where(p => p.TeamID == team.TeamID).ToList());
 
-            TeamWindow teamWindow = new TeamWindow(SeasonsGrid.SelectedItem.ToString(), team, tmp);
+            TeamWindow teamWindow = new TeamWindow(team, selectedTeamSeasons, selectedSeason, franchiseData );
             teamWindow.ShowDialog();
         }
     }

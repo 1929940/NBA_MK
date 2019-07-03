@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonReader\JsonObjects\Franchise.cs" />
+    <Compile Include="JsonReader\JsonObjects\FranchiseHistoryRootObject.cs" />
     <Compile Include="JsonReader\JsonObjects\PlayerProfile.cs" />
     <Compile Include="JsonReader\JsonObjects\PlayerProfileRootObject.cs" />
     <Compile Include="JsonReader\JsonObjects\ResultSet.cs" />
