@@ -25,7 +25,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public int? PlayerID { get; set; }
         public string Role { get; set; }
 
-        //change to private
         private string ConvertPosition(string position)
         {
             string output = "";

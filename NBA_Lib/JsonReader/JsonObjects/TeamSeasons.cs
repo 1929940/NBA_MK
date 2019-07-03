@@ -19,7 +19,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
             List<string> output = new List<string>();
 
-            while (min < max)
+            do
             {
                 string prefix = min.ToString();
                 min++;
@@ -28,7 +28,10 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 string merged = prefix + "-" + postfix;
 
                 output.Add(merged);
-            }
+            } while (min < max);
+
+
+
             output.Reverse();
             return output;
         }

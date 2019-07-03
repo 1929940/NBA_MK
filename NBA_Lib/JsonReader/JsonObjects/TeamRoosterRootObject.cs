@@ -16,8 +16,8 @@ namespace NBA_Lib.JsonReader.JsonObjects
             {
                 PlayerName = r[3].ToString(),
                 Number = Convert.ToInt32(r[4]),
-                Position = r[5].ToString(),
-                Height = r[6].ToString(),
+                Position = r[5]?.ToString(),
+                Height = r[6]?.ToString(),
                 Weight = Convert.ToInt32(r[7]),
                 BirthDate = DateTime.Parse(r[8].ToString()),
                 Age = Convert.ToInt32(r[9]),
@@ -34,7 +34,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
             var output = players.ToList();
             output.AddRange(coaches);
-
 
             return output;
         }
