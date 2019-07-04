@@ -43,9 +43,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
                     Streak = Convert.ToInt32(s[35])
                 });
             }
-
-
-
             return output.ToList();
         }
     }

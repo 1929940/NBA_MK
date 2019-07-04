@@ -31,7 +31,7 @@ namespace NBA_MK.View
 
             BindSeasons();
 
-            testFranchise();
+            //testFranchise();
 
             //testero();
 

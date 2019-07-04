@@ -17,12 +17,24 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public double Ratio { get; set; }
         public int? Streak { get; set; }
 
-        public static string TranslateIdIntoName(int id, List<Franchise> franchises)
-        {
-            if (id == 0) return "All Seasons";
+        //public static string TranslateIdIntoName(int id, List<Franchise> franchises)
+        //{
+        //    if (id == 0) return "All Teams";
 
-            return franchises.FirstOrDefault(t => t.TeamID == id).TeamName;
-        }
+        //    return franchises.FirstOrDefault(t => t.TeamID == id).TeamName;
+        //}
+        //public static Dictionary<int, string> GetIdNameDictionary(List<PlayerProfile> playerProfiles, List<Franchise> franchises)
+        //{
+        //    Dictionary<int, string> output = new Dictionary<int, string>();
+
+        //    //output.Add
+
+        //    //var teams = PlayerProfile.GetTeamIDs(playerProfiles);
+
+        //    //Teams_CBX.ItemsSource = teams.Select(f => Team.TranslateIdIntoName(f, franchises));
+
+        //}
+
 
         public override string ToString()
         {

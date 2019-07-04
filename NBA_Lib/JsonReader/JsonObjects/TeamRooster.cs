@@ -59,9 +59,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 }
                 return output;
             }
-            else return output = position;
-            
-
+            else return position;
         }
 
         public override string ToString()

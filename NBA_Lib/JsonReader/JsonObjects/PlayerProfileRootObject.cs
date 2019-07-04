@@ -14,7 +14,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
         {
             var perSeason = ResultSets[0].RowSet.Select(p => new PlayerProfile()
             {
-                TeamID = Convert.ToInt32(p[3]),
+                TeamID = (p[3].ToString() == "0") ? -1 : Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
 
                 GamesPlayed = Convert.ToInt32(p[6]),
