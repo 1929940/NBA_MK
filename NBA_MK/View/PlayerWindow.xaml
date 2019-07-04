@@ -55,7 +55,7 @@
                         Orientation="Horizontal" HorizontalAlignment="Right">
 
                 <Label Content="Teams"/>
-                <ComboBox Name="Teams_CBX" Margin="5,0,15,0" Width="100" DisplayMemberPath="Value" SelectionChanged="Teams_CBX_SelectionChanged"/>
+                <ComboBox Name="Teams_CBX" Margin="5,0,15,0" Width="150" DisplayMemberPath="Value" SelectionChanged="Teams_CBX_SelectionChanged"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1"

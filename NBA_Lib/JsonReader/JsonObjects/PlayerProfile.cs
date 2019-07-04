@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBA_Lib.JsonReader.JsonObjects
 {
@@ -40,6 +38,9 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
         public static List<string> GetSeasons(List<PlayerProfile> list, int id = 0)
         {
+            // A player can play in more than one team per season
+            // HashSet ensures there are no duplicate seasons
+
             HashSet<string> output;
 
             if (id != 0) output = list.Where(p => p.TeamID == id).Select(p => p.SeasonID).ToHashSet<string>();
@@ -64,19 +65,13 @@ namespace NBA_Lib.JsonReader.JsonObjects
         {
             if (id == 0) return "All Teams";
 
-            //PlayerProfileV2 Api sometimes provides an json without TeamID.
-            //Im assigning to them the id of -1
-            //And discarding those entries
-
-            //I think its when a player has played in several teams in one season
-            //The teamid-less records are a sum for that season
             if (id == -1) return string.Empty;
 
             var tmp = franchises.FirstOrDefault(t => t.TeamID == id).TeamName;
 
             return tmp;
         }
-        public static Dictionary<int, string> GetIdNameDictionary(List<PlayerProfile> playerProfiles, List<Franchise> franchises)
+        public static Dictionary<int, string> GetTeamIdNameDictionary(List<PlayerProfile> playerProfiles, List<Franchise> franchises)
         {
             Dictionary<int, string> output = new Dictionary<int, string>();
 
@@ -90,13 +85,13 @@ namespace NBA_Lib.JsonReader.JsonObjects
             }
             return output;
         }
-        public static PlayerProfile GetTotalStatsInTeam(int id, List<PlayerProfile> playerProfiles)
+        public static PlayerProfile GetPlayersTotalStatsWhileInTeam(int teamId, List<PlayerProfile> playerProfiles)
         {
             PlayerProfile output = new PlayerProfile();
 
             foreach (var profile in playerProfiles)
             {
-                if (profile.TeamID == id)
+                if (profile.TeamID == teamId)
                 {
                     output.GamesPlayed += profile.GamesPlayed;
                     output.GamesStarted += profile.GamesStarted;
@@ -129,7 +124,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
             output.ThreePointsFieldGoalPercentage = (output.ThreePointFieldGoalsAttempted > 0) ? 
                 Math.Round((double)output.ThreePointFieldGoalsMade / (double)output.ThreePointFieldGoalsAttempted, 3) : 0;
 
-            output.FreeThrowPercentage = (output.FreeThrowPercentage > 0) ?
+            output.FreeThrowPercentage = (output.FreeThrowsAttempted > 0) ?
                 Math.Round((double)output.FreeThrowsMade / (double)output.FreeThrowsAttempted, 3) : 0;
 
             return output;

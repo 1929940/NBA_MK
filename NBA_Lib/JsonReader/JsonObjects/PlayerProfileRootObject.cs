@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBA_Lib.JsonReader.JsonObjects
 {
@@ -14,6 +12,13 @@ namespace NBA_Lib.JsonReader.JsonObjects
         {
             var perSeason = ResultSets[0].RowSet.Select(p => new PlayerProfile()
             {
+                //When a player played in more than one team in a season
+                //PlayerProfileV2 API returns json with TeamID equal 0 
+                //with players total stats for the season.
+                //Changing that to -1 since 0 is reserved for [ all teams ]
+                //  0 = all teams
+                // -1 = total stats for a season  
+
                 TeamID = (p[3].ToString() == "0") ? -1 : Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
 
@@ -45,10 +50,10 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 PersonalFouls = Convert.ToInt32(p[25])
 
             });
-            // Collect Totals from the other list
+            // PlayerProfile with total statistics for all seasons.
             var inTotal = ResultSets[1].RowSet.Select(p => new PlayerProfile()
             {
-                //TeamID = Convert.ToInt32(p[2]),
+                //TeamID = Convert.ToInt32(p[2]), should make it -1
                 //SeasonID = p[1].ToString(), This is null
 
                 GamesPlayed = Convert.ToInt32(p[3]),

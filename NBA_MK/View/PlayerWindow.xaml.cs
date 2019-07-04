@@ -3,22 +3,12 @@ using NBA_Lib.JsonReader.JsonObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace NBA_MK.View
 {
-    /// <summary>
-    /// Interaction logic for PlayerWindow.xaml
-    /// </summary>
     public partial class PlayerWindow : Window
     {
         List<PlayerProfile> playerProfiles;
@@ -36,11 +26,11 @@ namespace NBA_MK.View
         {
             playerProfiles = await JsonReader.GetPlayerProfile(id);
 
-            Teams_CBX.ItemsSource = PlayerProfile.GetIdNameDictionary(playerProfiles, franchises);
+            Teams_CBX.ItemsSource = PlayerProfile.GetTeamIdNameDictionary(playerProfiles, franchises);
 
             Teams_CBX.SelectedIndex = Teams_CBX.Items.Count - 1;
         }
-        private void BindStats(string season, int id)
+        private void UpdateLabels(string season, int id)
         {
             PlayerProfile profile;
 
@@ -66,7 +56,7 @@ namespace NBA_MK.View
             if (id != 0)
             {
                 profile = playerProfiles.Where(p => p.TeamID == id).FirstOrDefault(p => p.SeasonID == season) 
-                    ?? PlayerProfile.GetTotalStatsInTeam(id, playerProfiles);
+                    ?? PlayerProfile.GetPlayersTotalStatsWhileInTeam(id, playerProfiles);
             }
             else
             {
@@ -109,7 +99,7 @@ namespace NBA_MK.View
 
             int teamId = ((KeyValuePair<int, string>)Teams_CBX.SelectedValue).Key;
 
-            BindStats(season, teamId);
+            UpdateLabels(season, teamId);
         }
 
         private void Teams_CBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -120,6 +110,7 @@ namespace NBA_MK.View
 
             Seasons_CBX.ItemsSource = list;
 
+            //Ensures Seasons_CBX_SelectionChanged event is fired up.
             Seasons_CBX.SelectedIndex = -1;
             Seasons_CBX.SelectedIndex = Seasons_CBX.Items.Count - 1;
         }
