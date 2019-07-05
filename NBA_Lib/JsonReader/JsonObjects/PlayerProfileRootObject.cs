@@ -13,13 +13,11 @@ namespace NBA_Lib.JsonReader.JsonObjects
             var perSeason = ResultSets[0].RowSet.Select(p => new PlayerProfile()
             {
                 //When a player played in more than one team in a season
-                //PlayerProfileV2 API returns json with TeamID equal 0 
-                //with players total stats for the season.
-                //Changing that to -1 since 0 is reserved for [ all teams ]
-                //  0 = all teams
-                // -1 = total stats for a season  
+                //PlayerProfileV2 API returns multiple entries for that season.
+                //One for team played, and additional one for total stats of that season.
+                //The additional entry has teamId = 0.
 
-                TeamID = (p[3].ToString() == "0") ? -1 : Convert.ToInt32(p[3]),
+                TeamID = Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
 
                 GamesPlayed = Convert.ToInt32(p[6]),
@@ -51,9 +49,9 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
             });
             // PlayerProfile with total statistics for all seasons.
-            var inTotal = ResultSets[1].RowSet.Select(p => new PlayerProfile()
+            PlayerProfile inTotal = ResultSets[1].RowSet.Select(p => new PlayerProfile()
             {
-                //TeamID = Convert.ToInt32(p[2]), should make it -1
+                TeamID = -1,
                 //SeasonID = p[1].ToString(), This is null
 
                 GamesPlayed = Convert.ToInt32(p[3]),
@@ -82,9 +80,9 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 Blocks = Convert.ToInt32(p[20]),
                 Turnover = Convert.ToInt32(p[21]),
                 PersonalFouls = Convert.ToInt32(p[22])
-            });
+            }).First();
             var output = perSeason.ToList();
-            output.AddRange(inTotal);
+            output.Add(inTotal);
 
             return output;
         }

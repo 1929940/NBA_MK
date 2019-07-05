@@ -53,16 +53,16 @@ namespace NBA_MK.View
             PlayerProfile profile;
 
             #region Explanation
-            //Based on team and season comboboxes determines which playerprofile will be displayed 
-            //Depending on the ID there are 2 possible paths
+            //Based on team and season comboboxes, determines which playerprofile will be displayed. 
+            //Depending on the teamID, there are 2 possible paths:
 
-            //One: ID is 0. 
+            //One: ID is -1. 
 
             //Means the user has chosen to display [all teams] in TeamComboBox
             //In the case of the player being a part of more than one team in a season
-            //playerProfiles with teamid of -1 contain data for the whole season including all teams
+            //playerProfiles with teamid of 0 contain data for the whole season including all teams
             //When [all teams] and [all seasons] are displayed the last entry in playerProfiles is chosen.
-            //It constains the total data of a players career
+            //It constains the total data of a players statistics through his career.
 
             //Two: ID > 0.
 
@@ -71,14 +71,14 @@ namespace NBA_MK.View
             //containing the sum of all statistic(eg. total minutes played in Chicago Bulls) from that team.
             #endregion
 
-            if (id != 0)
+            if (id != -1)
             {
                 profile = playerProfiles.Where(p => p.TeamID == id).FirstOrDefault(p => p.SeasonID == season) 
                     ?? PlayerProfile.GetPlayersTotalStatsWhileInTeam(id, playerProfiles);
             }
             else
             {
-                profile = playerProfiles.Where(p => p.TeamID == -1).FirstOrDefault(p => p.SeasonID == season)
+                profile = playerProfiles.Where(p => p.TeamID == 0).FirstOrDefault(p => p.SeasonID == season)
                     ?? playerProfiles.FirstOrDefault(p => p.SeasonID == season)
                     ?? playerProfiles[playerProfiles.Count-1];
             }

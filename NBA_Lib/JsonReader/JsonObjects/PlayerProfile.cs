@@ -36,14 +36,14 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public int Turnover { get; set; }
         public int PersonalFouls { get; set; }
 
-        public static List<string> GetSeasons(List<PlayerProfile> list, int id = 0)
+        public static List<string> GetSeasons(List<PlayerProfile> list, int id = -1)
         {
             // A player can play in more than one team per season
             // HashSet ensures there are no duplicate seasons
 
             HashSet<string> output;
 
-            if (id != 0) output = list.Where(p => p.TeamID == id).Select(p => p.SeasonID).ToHashSet<string>();
+            if (id != -1) output = list.Where(p => p.TeamID == id).Select(p => p.SeasonID).ToHashSet<string>();
             else output = list.Select(p => p.SeasonID).ToHashSet<string>();
 
             output.Remove(null);
@@ -55,17 +55,19 @@ namespace NBA_Lib.JsonReader.JsonObjects
         {
             List<int> output;
 
-            output = list.Select(p => p.TeamID).Where(p => p != 0).Distinct().ToList();
+            output = list.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
 
-            output.Add(0);
+            output.Add(-1);
+
+            Console.WriteLine("Yes: GetTeamIDs is active");
 
             return output;
         }
         private static string TranslateIdIntoName(int id, List<Franchise> franchises)
         {
-            if (id == 0) return "All Teams";
+            if (id == 0) return string.Empty;
 
-            if (id == -1) return string.Empty;
+            if (id == -1) return "All Teams";
 
             var tmp = franchises.FirstOrDefault(t => t.TeamID == id).TeamName;
 
@@ -80,7 +82,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 int id = player.TeamID;
                 string name = TranslateIdIntoName(id, franchises);
 
-                if  (!output.Keys.Contains(id) && id != -1)
+                if  (!output.Keys.Contains(id) && id != 0)
                     output.Add(id, name);
             }
             return output;
