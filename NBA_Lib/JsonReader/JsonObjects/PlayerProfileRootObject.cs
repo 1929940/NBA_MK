@@ -17,6 +17,10 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 //One for team played, and additional one for total stats of that season.
                 //The additional entry has teamId = 0.
 
+                //This code can be improved, however casting obj to (int?) and (obj as int?) seem to fail
+                //Perhaps if I try adjusting resultset to give me a list of string instead of obj, this will help?
+                //Parse wont work, TryParse might be an chaotic way to do it but perhaps?
+
                 TeamID = Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
 
