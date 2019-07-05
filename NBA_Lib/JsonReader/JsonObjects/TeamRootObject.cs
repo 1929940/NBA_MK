@@ -26,7 +26,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
                     Wins = Convert.ToInt32(s[12]),
                     Losses = Convert.ToInt32(s[13]),
                     Ratio = Convert.ToDouble(s[14]),
-                    Streak = Convert.ToInt32(s[35])
+                    Streak = (s[35] == null) ? null : (int?)Convert.ToInt32(s[35])
                 });
             }
             else
@@ -40,10 +40,11 @@ namespace NBA_Lib.JsonReader.JsonObjects
                     Wins = Convert.ToInt32(s[12]),
                     Losses = Convert.ToInt32(s[13]),
                     Ratio = Convert.ToDouble(s[14]),
-                    Streak = Convert.ToInt32(s[35])
+                    Streak = (s[35] == null) ? null : (int?)Convert.ToInt32(s[35])
                 });
             }
             return output.ToList();
         }
+
     }
 }

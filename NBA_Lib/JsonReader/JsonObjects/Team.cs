@@ -17,6 +17,16 @@ namespace NBA_Lib.JsonReader.JsonObjects
         public double Ratio { get; set; }
         public int? Streak { get; set; }
 
+        public static IEnumerable<Team> CorrectStanding(IEnumerable<Team> team)
+        {
+            if (team.All(t => t.Standing == 0))
+            {
+                int index = 0;
+
+                return team.OrderByDescending(t => t.Ratio).Select((t, standing) => { t.Standing = ++index; return t; });
+            }
+            return team;
+        }
         public override string ToString()
         {
             string output = String.Format("TeamId: {0} \n" +

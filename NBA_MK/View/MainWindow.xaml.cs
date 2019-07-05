@@ -30,15 +30,6 @@ namespace NBA_MK.View
             InitializeComponent();
 
             BindSeasons();
-
-            //testFranchise();
-
-            //testero();
-
-            //JsonReader.GetPlayerProfile(2544);
-
-            //testeroPlayero();
-
         }
         public async Task testero()
         {
@@ -72,8 +63,8 @@ namespace NBA_MK.View
         {
             var teams = await JsonReader.GetTeamsAsync(season);
 
-            TeamGridWest.ItemsSource = teams.Where(t => t.Conference == "West");
-            TeamGridEast.ItemsSource = teams.Where(t => t.Conference == "East");
+            TeamGridWest.ItemsSource = Team.CorrectStanding(teams.Where(t => t.Conference == "West"));
+            TeamGridEast.ItemsSource = Team.CorrectStanding(teams.Where(t => t.Conference == "East"));
         }
         private async Task BindSeasons()
         {
