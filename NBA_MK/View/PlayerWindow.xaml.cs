@@ -24,8 +24,6 @@ namespace NBA_MK.View
             BindControls(selectedPlayerID, franchises, teamID);
 
             PlayerView_Label.Content = selectedPlayersName;
-
-            
         }
 
         private async Task BindControls(int id, List<Franchise> franchises, int teamID)
@@ -83,32 +81,53 @@ namespace NBA_MK.View
                     ?? playerProfiles[playerProfiles.Count-1];
             }
 
-            GP_LBL.Content = (profile.GamesPlayed == -100) ? "No Data" : profile.GamesPlayed.ToString();
-            GS_LBL.Content = (profile.GamesStarted == -100) ? "No Data" : profile.GamesStarted.ToString();
-            Min_LBL.Content = (profile.MinutesPlayed == -100) ? "No Data" : profile.MinutesPlayed.ToString();
+            GP_LBL.Content = (profile.GamesPlayed == -100) ? 
+                "No Data" : profile.GamesPlayed.ToString();
+            GS_LBL.Content = (profile.GamesStarted == -100) ? 
+                "No Data" : profile.GamesStarted.ToString();
+            Min_LBL.Content = (profile.MinutesPlayed == -100) ? 
+                "No Data" : profile.MinutesPlayed.ToString();
 
-            FGM_LBL.Content = (profile.FieldGoalsMade == -100) ? "No Data" : profile.FieldGoalsMade.ToString();
-            FGA_LBL.Content = (profile.FieldGoalsAttempted == -100) ? "No Data" : profile.FieldGoalsAttempted.ToString();
-            FGP_LBL.Content = (profile.FieldGoalsPercentage == -100) ? "No Data" : profile.FieldGoalsPercentage * 100 + "%";
+            FGM_LBL.Content = (profile.FieldGoalsMade == -100) ? 
+                "No Data" : profile.FieldGoalsMade.ToString();
+            FGA_LBL.Content = (profile.FieldGoalsAttempted == -100) ? 
+                "No Data" : profile.FieldGoalsAttempted.ToString();
+            FGP_LBL.Content = (profile.FieldGoalsPercentage == -100) ? 
+                "No Data" : profile.FieldGoalsPercentage * 100 + "%";
 
-            TPM_LBL.Content = (profile.ThreePointFieldGoalsMade == -100) ? "No Data" : profile.ThreePointFieldGoalsMade.ToString();
-            TPA_LBL.Content = (profile.ThreePointFieldGoalsAttempted == -100) ? "No Data" : profile.ThreePointFieldGoalsAttempted.ToString(); ;
-            TPP_LBL.Content = (profile.ThreePointsFieldGoalPercentage == -100) ? "No Data" : profile.ThreePointsFieldGoalPercentage * 100 + "%";
+            TPM_LBL.Content = (profile.ThreePointFieldGoalsMade == -100) ? 
+                "No Data" : profile.ThreePointFieldGoalsMade.ToString();
+            TPA_LBL.Content = (profile.ThreePointFieldGoalsAttempted == -100) ? 
+                "No Data" : profile.ThreePointFieldGoalsAttempted.ToString(); ;
+            TPP_LBL.Content = (profile.ThreePointsFieldGoalPercentage == -100) ? 
+                "No Data" : profile.ThreePointsFieldGoalPercentage * 100 + "%";
 
-            FTM_LBL.Content = (profile.FreeThrowsMade == -100) ? "No Data" : profile.FreeThrowsMade.ToString();
-            FTA_LBL.Content = (profile.FreeThrowsAttempted == -100) ? "No Data" : profile.FreeThrowsAttempted.ToString(); ;
-            FTP_LBL.Content = (profile.FreeThrowPercentage == -100) ? "No Data" : profile.FreeThrowPercentage * 100 + "%";
+            FTM_LBL.Content = (profile.FreeThrowsMade == -100) ? 
+                "No Data" : profile.FreeThrowsMade.ToString();
+            FTA_LBL.Content = (profile.FreeThrowsAttempted == -100) ? 
+                "No Data" : profile.FreeThrowsAttempted.ToString(); ;
+            FTP_LBL.Content = (profile.FreeThrowPercentage == -100) ? 
+                "No Data" : profile.FreeThrowPercentage * 100 + "%";
 
-            OREB_LBL.Content = (profile.OffensiveRebounds == -100) ? "No Data" : profile.OffensiveRebounds.ToString();
-            DREB_LBL.Content = (profile.DefensiveRebounds == -100) ? "No Data" : profile.DefensiveRebounds.ToString();
-            Reb_LBL.Content = (profile.Rebounds == -100) ? "No Data" : profile.Rebounds.ToString();
+            OREB_LBL.Content = (profile.OffensiveRebounds == -100) ? 
+                "No Data" : profile.OffensiveRebounds.ToString();
+            DREB_LBL.Content = (profile.DefensiveRebounds == -100) ? 
+                "No Data" : profile.DefensiveRebounds.ToString();
+            Reb_LBL.Content = (profile.Rebounds == -100) ? 
+                "No Data" : profile.Rebounds.ToString();
 
-            PTS_LBL.Content = (profile.Points == -100) ? "No Data" : profile.Points.ToString();
-            Ast_LBL.Content = (profile.Assists == -100) ? "No Data" : profile.Assists.ToString();
-            Stl_LBL.Content = (profile.Steals == -100) ? "No Data" : profile.Steals.ToString();
-            Blc_LBL.Content = (profile.Blocks == -100) ? "No Data" : profile.Blocks.ToString();
-            Tov_LBL.Content = (profile.Turnover == -100) ? "No Data" : profile.Turnover.ToString();
-            PF_LBL.Content = (profile.PersonalFouls == -100) ? "No Data" : profile.PersonalFouls.ToString();
+            PTS_LBL.Content = (profile.Points == -100) ? 
+                "No Data" : profile.Points.ToString();
+            Ast_LBL.Content = (profile.Assists == -100) ? 
+                "No Data" : profile.Assists.ToString();
+            Stl_LBL.Content = (profile.Steals == -100) ? 
+                "No Data" : profile.Steals.ToString();
+            Blc_LBL.Content = (profile.Blocks == -100) ? 
+                "No Data" : profile.Blocks.ToString();
+            Tov_LBL.Content = (profile.Turnover == -100) ? 
+                "No Data" : profile.Turnover.ToString();
+            PF_LBL.Content = (profile.PersonalFouls == -100) ? 
+                "No Data" : profile.PersonalFouls.ToString();
         }
 
         private void Seasons_CBX_SelectionChanged(object sender, SelectionChangedEventArgs e)

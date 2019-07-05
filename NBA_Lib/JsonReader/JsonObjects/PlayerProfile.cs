@@ -95,29 +95,41 @@ namespace NBA_Lib.JsonReader.JsonObjects
             {
                 if (profile.TeamID == teamId)
                 {
-                    output.GamesPlayed += profile.GamesPlayed;
-                    output.GamesStarted += profile.GamesStarted;
-                    output.MinutesPlayed += profile.MinutesPlayed;
+                    output.GamesPlayed += 
+                        (profile.GamesPlayed == -100) ? 0 : profile.GamesPlayed;
+                    output.GamesStarted += 
+                        (profile.GamesStarted == -100) ? 0 : profile.GamesStarted;
+                    output.MinutesPlayed += 
+                        (profile.MinutesPlayed == -100) ? 0 : profile.MinutesPlayed;
 
-                    output.FieldGoalsMade += profile.FieldGoalsMade;
-                    output.FieldGoalsAttempted += profile.FieldGoalsAttempted;
+                    output.FieldGoalsMade += 
+                        (profile.FieldGoalsMade == -100) ? 0 : profile.FieldGoalsMade;
+                    output.FieldGoalsAttempted += 
+                        (profile.FieldGoalsAttempted == -100) ? 0 : profile.FieldGoalsAttempted;
 
-                    output.ThreePointFieldGoalsMade += profile.ThreePointFieldGoalsMade;
-                    output.ThreePointFieldGoalsAttempted += profile.ThreePointFieldGoalsAttempted;
+                    output.ThreePointFieldGoalsMade += 
+                        (profile.ThreePointFieldGoalsMade == -100) ? 0 : profile.ThreePointFieldGoalsMade;
+                    output.ThreePointFieldGoalsAttempted += 
+                        (profile.ThreePointFieldGoalsAttempted == -100) ? 0 : profile.ThreePointFieldGoalsAttempted;
 
-                    output.FreeThrowsMade += profile.FreeThrowsMade;
-                    output.FreeThrowsAttempted += profile.FreeThrowsAttempted;
+                    output.FreeThrowsMade += 
+                        (profile.FreeThrowsMade == -100) ? 0 : profile.FreeThrowsMade;
+                    output.FreeThrowsAttempted += 
+                        (profile.FreeThrowsAttempted == -100) ? 0 : profile.FreeThrowsAttempted;
 
-                    output.OffensiveRebounds += profile.OffensiveRebounds;
-                    output.DefensiveRebounds += profile.DefensiveRebounds;
-                    output.Rebounds += profile.Rebounds;
+                    output.OffensiveRebounds += 
+                        (profile.OffensiveRebounds == -100) ? 0 : profile.OffensiveRebounds;
+                    output.DefensiveRebounds += 
+                        (profile.DefensiveRebounds == -100) ? 0 : profile.DefensiveRebounds;
+                    output.Rebounds += 
+                        (profile.Rebounds == -100) ? 0 : profile.Rebounds;
 
-                    output.Points += profile.Points;
-                    output.Assists += profile.Assists;
-                    output.Steals += profile.Steals;
-                    output.Blocks += profile.Blocks;
-                    output.Turnover += profile.Turnover;
-                    output.PersonalFouls += profile.PersonalFouls;
+                    output.Points += (profile.Points == -100) ? 0 : profile.Points;
+                    output.Assists += (profile.Assists == -100) ? 0 : profile.Assists;
+                    output.Blocks += (profile.Blocks == -100) ? 0 : profile.Blocks;
+                    output.Steals += (profile.Steals == -100) ? 0 : profile.Steals;
+                    output.Turnover += (profile.Turnover == -100) ? 0 : profile.Turnover;
+                    output.PersonalFouls += (profile.PersonalFouls == -100) ? 0 : profile.PersonalFouls;
                 }
             }
             output.FieldGoalsPercentage = (output.FieldGoalsAttempted > 0) ?
