@@ -20,32 +20,32 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 TeamID = Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
 
-                GamesPlayed = Convert.ToInt32(p[6]),
-                GamesStarted = Convert.ToInt32(p[7]),
-                MinutesPlayed = Convert.ToInt32(p[8]),
+                GamesPlayed = (p[6] == null) ? -100 : Convert.ToInt32(p[6]),
+                GamesStarted = (p[7] == null) ? -100 : Convert.ToInt32(p[7]),
+                MinutesPlayed = (p[8] == null) ? -100 : Convert.ToInt32(p[8]),
 
-                FieldGoalsMade = Convert.ToInt32(p[9]),
-                FieldGoalsAttempted = Convert.ToInt32(p[10]),
-                FieldGoalsPercentage = Convert.ToDouble(p[11]),
+                FieldGoalsMade = (p[9] == null) ? -100 : Convert.ToInt32(p[9]),
+                FieldGoalsAttempted = (p[10] == null) ? -100 : Convert.ToInt32(p[10]),
+                FieldGoalsPercentage = (p[11] == null) ? -100 : Convert.ToDouble(p[11]),
 
-                ThreePointFieldGoalsMade = Convert.ToInt32(p[12]),
-                ThreePointFieldGoalsAttempted = Convert.ToInt32(p[13]),
-                ThreePointsFieldGoalPercentage = Convert.ToDouble(p[14]),
+                ThreePointFieldGoalsMade = (p[12] == null) ? -100 : Convert.ToInt32(p[12]),
+                ThreePointFieldGoalsAttempted = (p[13] == null) ? -100 : Convert.ToInt32(p[13]),
+                ThreePointsFieldGoalPercentage = (p[14] == null) ? -100 : Convert.ToDouble(p[14]),
 
-                FreeThrowsMade = Convert.ToInt32(p[15]),
-                FreeThrowsAttempted = Convert.ToInt32(p[16]),
-                FreeThrowPercentage = Convert.ToDouble(p[17]),
+                FreeThrowsMade = (p[15] == null) ? -100 : Convert.ToInt32(p[15]),
+                FreeThrowsAttempted = (p[16] == null) ? -100 : Convert.ToInt32(p[16]),
+                FreeThrowPercentage = (p[17] == null) ? -100 : Convert.ToDouble(p[17]),
 
-                OffensiveRebounds = Convert.ToInt32(p[18]),
-                DefensiveRebounds = Convert.ToInt32(p[19]),
-                Rebounds = Convert.ToInt32(p[20]),
+                OffensiveRebounds = (p[18] == null) ? -100 : Convert.ToInt32(p[18]),
+                DefensiveRebounds = (p[19] == null) ? -100 : Convert.ToInt32(p[19]),
+                Rebounds = (p[20] == null) ? -100 : Convert.ToInt32(p[20]),
 
-                Points = Convert.ToInt32(p[26]),
-                Assists = Convert.ToInt32(p[21]),
-                Steals = Convert.ToInt32(p[22]),
-                Blocks = Convert.ToInt32(p[23]),
-                Turnover = Convert.ToInt32(p[24]),
-                PersonalFouls = Convert.ToInt32(p[25])
+                Points = (p[26] == null) ? -100 : Convert.ToInt32(p[26]),
+                Assists = (p[21] == null) ? -100 : Convert.ToInt32(p[21]),
+                Steals = (p[22] == null) ? -100 : Convert.ToInt32(p[22]),
+                Blocks = (p[23] == null) ? -100 : Convert.ToInt32(p[23]),
+                Turnover = (p[24] == null) ? -100 : Convert.ToInt32(p[24]),
+                PersonalFouls = (p[25] == null) ? -100 : Convert.ToInt32(p[25])
 
             });
             // PlayerProfile with total statistics for all seasons.

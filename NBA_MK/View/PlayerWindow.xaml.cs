@@ -24,6 +24,8 @@ namespace NBA_MK.View
             BindControls(selectedPlayerID, franchises, teamID);
 
             PlayerView_Label.Content = selectedPlayersName;
+
+            
         }
 
         private async Task BindControls(int id, List<Franchise> franchises, int teamID)
@@ -52,24 +54,22 @@ namespace NBA_MK.View
         {
             PlayerProfile profile;
 
-            #region Explanation
-            //Based on team and season comboboxes, determines which playerprofile will be displayed. 
-            //Depending on the teamID, there are 2 possible paths:
+            /**Based on team and season comboboxes, determines which playerprofile will be displayed.
+            Depending on the teamID, there are 2 possible paths:
 
-            //One: ID is -1. 
+            One: ID is -1.
 
-            //Means the user has chosen to display [all teams] in TeamComboBox
-            //In the case of the player being a part of more than one team in a season
-            //playerProfiles with teamid of 0 contain data for the whole season including all teams
-            //When [all teams] and [all seasons] are displayed the last entry in playerProfiles is chosen.
-            //It constains the total data of a players statistics through his career.
+            Means the user has chosen to display[all teams] in TeamComboBox
+           In the case of the player being a part of more than one team in a season
+            playerProfiles with teamid of 0 contain data for the whole season including all teams
+            When[all teams] and[all seasons] are displayed the last entry in playerProfiles is chosen.
+            It constains the total data of a players statistics through his career.
 
-            //Two: ID > 0.
+            Two: ID > 0.
 
-            //Means the user has chosen a specific team, 
-            //In case of chosing to display [all seasons] a profile will be generated
-            //containing the sum of all statistic(eg. total minutes played in Chicago Bulls) from that team.
-            #endregion
+            Means the user has chosen a specific team,
+            In case of chosing to display[all seasons] a profile will be generated
+            containing the sum of all statistic(eg.total minutes played in Chicago Bulls) from that team.**/
 
             if (id != -1)
             {
@@ -83,32 +83,32 @@ namespace NBA_MK.View
                     ?? playerProfiles[playerProfiles.Count-1];
             }
 
-            GP_LBL.Content = profile.GamesPlayed;
-            GS_LBL.Content = profile.GamesStarted;
-            Min_LBL.Content = profile.MinutesPlayed;
+            GP_LBL.Content = (profile.GamesPlayed == -100) ? "No Data" : profile.GamesPlayed.ToString();
+            GS_LBL.Content = (profile.GamesStarted == -100) ? "No Data" : profile.GamesStarted.ToString();
+            Min_LBL.Content = (profile.MinutesPlayed == -100) ? "No Data" : profile.MinutesPlayed.ToString();
 
-            FGM_LBL.Content = profile.FieldGoalsMade;
-            FGA_LBL.Content = profile.FieldGoalsAttempted;
-            FGP_LBL.Content = profile.FieldGoalsPercentage * 100 + "%";
+            FGM_LBL.Content = (profile.FieldGoalsMade == -100) ? "No Data" : profile.FieldGoalsMade.ToString();
+            FGA_LBL.Content = (profile.FieldGoalsAttempted == -100) ? "No Data" : profile.FieldGoalsAttempted.ToString();
+            FGP_LBL.Content = (profile.FieldGoalsPercentage == -100) ? "No Data" : profile.FieldGoalsPercentage * 100 + "%";
 
-            TPM_LBL.Content = profile.ThreePointFieldGoalsMade;
-            TPA_LBL.Content = profile.ThreePointFieldGoalsAttempted;
-            TPP_LBL.Content = profile.ThreePointsFieldGoalPercentage * 100 + "%";
+            TPM_LBL.Content = (profile.ThreePointFieldGoalsMade == -100) ? "No Data" : profile.ThreePointFieldGoalsMade.ToString();
+            TPA_LBL.Content = (profile.ThreePointFieldGoalsAttempted == -100) ? "No Data" : profile.ThreePointFieldGoalsAttempted.ToString(); ;
+            TPP_LBL.Content = (profile.ThreePointsFieldGoalPercentage == -100) ? "No Data" : profile.ThreePointsFieldGoalPercentage * 100 + "%";
 
-            FTM_LBL.Content = profile.FreeThrowsMade;
-            FTA_LBL.Content = profile.FreeThrowsAttempted;
-            FTP_LBL.Content = profile.FreeThrowPercentage * 100 + "%";
+            FTM_LBL.Content = (profile.FreeThrowsMade == -100) ? "No Data" : profile.FreeThrowsMade.ToString();
+            FTA_LBL.Content = (profile.FreeThrowsAttempted == -100) ? "No Data" : profile.FreeThrowsAttempted.ToString(); ;
+            FTP_LBL.Content = (profile.FreeThrowPercentage == -100) ? "No Data" : profile.FreeThrowPercentage * 100 + "%";
 
-            OREB_LBL.Content = profile.OffensiveRebounds;
-            DREB_LBL.Content = profile.DefensiveRebounds;
-            Reb_LBL.Content = profile.Rebounds;
+            OREB_LBL.Content = (profile.OffensiveRebounds == -100) ? "No Data" : profile.OffensiveRebounds.ToString();
+            DREB_LBL.Content = (profile.DefensiveRebounds == -100) ? "No Data" : profile.DefensiveRebounds.ToString();
+            Reb_LBL.Content = (profile.Rebounds == -100) ? "No Data" : profile.Rebounds.ToString();
 
-            PTS_LBL.Content = profile.Points;
-            Ast_LBL.Content = profile.Assists;
-            Stl_LBL.Content = profile.Steals;
-            Blc_LBL.Content = profile.Blocks;
-            Tov_LBL.Content = profile.Turnover;
-            PF_LBL.Content = profile.PersonalFouls;
+            PTS_LBL.Content = (profile.Points == -100) ? "No Data" : profile.Points.ToString();
+            Ast_LBL.Content = (profile.Assists == -100) ? "No Data" : profile.Assists.ToString();
+            Stl_LBL.Content = (profile.Steals == -100) ? "No Data" : profile.Steals.ToString();
+            Blc_LBL.Content = (profile.Blocks == -100) ? "No Data" : profile.Blocks.ToString();
+            Tov_LBL.Content = (profile.Turnover == -100) ? "No Data" : profile.Turnover.ToString();
+            PF_LBL.Content = (profile.PersonalFouls == -100) ? "No Data" : profile.PersonalFouls.ToString();
         }
 
         private void Seasons_CBX_SelectionChanged(object sender, SelectionChangedEventArgs e)
