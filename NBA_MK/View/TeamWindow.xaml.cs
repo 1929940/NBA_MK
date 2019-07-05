@@ -29,15 +29,12 @@ namespace NBA_MK.View
         {
             InitializeComponent();
 
-            //season = this.season;
             teamID = team.TeamID;
             teamName = team.TeamName;
 
             franchiseData = franchises;
 
             MainLabel.Content = teamName + " Team Rooster";
-
-            //BindRooster(team.TeamID, season);
 
             BindSeasons(seasons, selectedSeason);
         }
@@ -56,6 +53,8 @@ namespace NBA_MK.View
 
         private void TeamRoosterGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            // Add a messageBox
+            // Sorry there is no additional Data for coaches
             if ((TeamRoosterGrid.SelectedItem as TeamRooster).Role == "Coach") return;
 
             int playerID = (int)(TeamRoosterGrid.SelectedItem as TeamRooster).PlayerID;
@@ -64,7 +63,7 @@ namespace NBA_MK.View
 
             string selectedSeason = Seasons_CBX.SelectedValue.ToString();
 
-            PlayerWindow playerWindow = new PlayerWindow(playerID, playerName, teamName, selectedSeason, franchiseData);
+            PlayerWindow playerWindow = new PlayerWindow(playerID, playerName, teamID, selectedSeason, franchiseData);
             playerWindow.ShowDialog();
         }
 

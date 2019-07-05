@@ -12,24 +12,42 @@ namespace NBA_MK.View
     public partial class PlayerWindow : Window
     {
         List<PlayerProfile> playerProfiles;
+        public bool FirstInitialization { get; set; } = true;
+        public string SelectedSeason { get; set; }
 
-        public PlayerWindow(int selectedPlayerID, string selectedPlayersName, string selectedTeamsName, string selectedSeason, List<Franchise> franchises)
+        public PlayerWindow(int selectedPlayerID, string selectedPlayersName, int teamID, string selectedSeason, List<Franchise> franchises)
         {
             InitializeComponent();
 
-            BindControls(selectedPlayerID, franchises, selectedSeason);
+            SelectedSeason = selectedSeason;
+
+            BindControls(selectedPlayerID, franchises, teamID);
 
             PlayerView_Label.Content = selectedPlayersName;
         }
 
-        private async Task BindControls(int id, List<Franchise> franchises, string selectedSeason)
+        private async Task BindControls(int id, List<Franchise> franchises, int teamID)
         {
             playerProfiles = await JsonReader.GetPlayerProfile(id);
 
             Teams_CBX.ItemsSource = PlayerProfile.GetTeamIdNameDictionary(playerProfiles, franchises);
 
-            Teams_CBX.SelectedIndex = Teams_CBX.Items.Count - 1;
+            //Teams_CBX.SelectedIndex = Teams_CBX.Items.Count - 1;
+
+            SetSelectedItem(Teams_CBX, teamID);
         }
+        private void SetSelectedItem(ComboBox cbx, int teamID)
+        {
+            foreach (var item in cbx.Items)
+            {
+                int key = ((KeyValuePair<int, string>)item).Key;
+                if (key == teamID)
+                {
+                    Teams_CBX.SelectedItem = item;
+                }
+            }
+        }
+
         private void UpdateLabels(string season, int id)
         {
             PlayerProfile profile;
@@ -110,9 +128,17 @@ namespace NBA_MK.View
 
             Seasons_CBX.ItemsSource = list;
 
-            //Ensures Seasons_CBX_SelectionChanged event is fired up.
-            Seasons_CBX.SelectedIndex = -1;
-            Seasons_CBX.SelectedIndex = Seasons_CBX.Items.Count - 1;
+            if (FirstInitialization)
+            {
+                Seasons_CBX.SelectedValue = SelectedSeason;
+                FirstInitialization = false;
+            }
+            else
+            {
+                //Ensures Seasons_CBX_SelectionChanged event is fired up.
+                Seasons_CBX.SelectedIndex = -1;
+                Seasons_CBX.SelectedIndex = Seasons_CBX.Items.Count - 1;
+            }
         }
     }
 }
