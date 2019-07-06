@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
+        xmlns:Models="clr-namespace:NBA_MK.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="501" Width="800">
     <Grid Margin="5">
@@ -35,19 +36,29 @@
                   RowHeight="20">
 
                     <DataGrid.Resources>
+                        <Models:StreakColorConverter x:Key="StreakColorConverter"/>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        </Style>
+                        <Style x:Key="AlignToTheRight" TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0,0,5,0"/>
+                        </Style>
+                        <Style x:Key="StreakColorAdjuster" TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0,0,10,0"/>
+                            <Setter Property="Foreground" Value="{Binding Streak, Converter={StaticResource StreakColorConverter}}" />
                         </Style>
                     </DataGrid.Resources>
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Standing" Binding="{Binding Standing}"/>
                         <DataGridTextColumn Header="Team Name" Width="*" Binding="{Binding TeamName}"/>
-                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}"/>
-                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}"/>
-                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}"/>
-                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}"/>
+                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}" ElementStyle="{StaticResource StreakColorAdjuster}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 
@@ -61,18 +72,28 @@
                   MouseDoubleClick="TeamGrid_MouseDoubleClick"
                   RowHeight="20">
                     <DataGrid.Resources>
+                        <Models:StreakColorConverter x:Key="StreakColorConverter"/>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        </Style>
+                        <Style x:Key="AlignToTheRight" TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0,0,5,0"/>
+                        </Style>
+                        <Style x:Key="StreakColorAdjuster" TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0,0,10,0"/>
+                            <Setter Property="Foreground" Value="{Binding Streak, Converter={StaticResource StreakColorConverter}}" />
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Standing" Binding="{Binding Standing}"/>
                         <DataGridTextColumn Header="Team Name" Width="*" Binding="{Binding TeamName}"/>
-                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}"/>
-                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}"/>
-                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}"/>
-                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}"/>
+                        <DataGridTextColumn Header="Win" MinWidth="50" Binding="{Binding Wins}"    ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="Loss" MinWidth="50" Binding="{Binding Losses}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="W-L" MinWidth="50" Binding="{Binding Ratio}"   ElementStyle="{StaticResource AlignToTheRight}"/>
+                        <DataGridTextColumn Header="Streak" MinWidth="50" Binding="{Binding Streak}" ElementStyle="{StaticResource StreakColorAdjuster}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

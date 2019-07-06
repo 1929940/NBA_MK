@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Models\HeightToCmConverter.cs" />
     <Compile Include="Models\NumberConverter.cs" />
+    <Compile Include="Models\StreakColorConverter.cs" />
     <Compile Include="Models\WeightToKgConverter.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

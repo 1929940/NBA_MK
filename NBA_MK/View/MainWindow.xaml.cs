@@ -26,6 +26,8 @@ namespace NBA_MK.View
 
             BindSeasons();
         }
+
+
         public async Task BindTeams(string season)
         {
             var teams = await JsonReader.GetTeamsAsync(season);

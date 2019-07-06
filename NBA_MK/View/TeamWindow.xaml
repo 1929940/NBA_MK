@@ -38,12 +38,12 @@
                 </StackPanel.Resources>
             
             <Label Content="Search"/>
-            <TextBox Name="TeamFilter" Margin="0,0,0,10"
+            <TextBox Name="TeamFilter" Margin="0,0,0,10" TextChanged="TeamFilter_TextChanged"
                  HorizontalAlignment="Right" 
                  Height="20" Width="100"/>
 
             <Label Content="Role"/>
-            <ComboBox Name="Role_CBX" Margin="0,0,0,10">
+            <ComboBox Name="Role_CBX" Margin="0,0,0,10" SelectionChanged="CBX_SelectionChanged">
                 <ComboBoxItem Content="Player"/>
                 <ComboBoxItem Content="Coach"/>
                 <ComboBoxItem Content="All" IsSelected="True"/>
@@ -53,13 +53,13 @@
             <ComboBox Name="Seasons_CBX" Margin="0,0,0,10" SelectionChanged="Seasons_CBX_SelectionChanged"/>
 
             <Label Content="Position"/>
-            <ComboBox Name="Position_CBX">
+            <ComboBox Name="Position_CBX" SelectionChanged="CBX_SelectionChanged">
                 <ComboBoxItem Content="All" IsSelected="True"/>
                 <ComboBoxItem Content="Guard"/>
                 <ComboBoxItem Content="Center"/>
                 <ComboBoxItem Content="Forward"/>
                 <ComboBoxItem Content="Forward-Center"/>
-                <ComboBoxItem Content="Forward-Giard"/>
+                <ComboBoxItem Content="Forward-Guard"/>
             </ComboBox>
 
         </StackPanel>
@@ -82,15 +82,19 @@
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 </Style>
+                <Style x:Key="AlignToTheRight" TargetType="{x:Type TextBlock}">
+                    <Setter Property="TextAlignment" Value="Right" />
+                    <Setter Property="Margin" Value="0,0,5,0"/>
+                </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Player Name" Width="2*" Binding="{Binding PlayerName}"/>
                 <DataGridTextColumn Header="Position" Width="2.2*" Binding="{Binding Position}"/>
-                <DataGridTextColumn Header="Number" Width="*" Binding="{Binding Number, Converter={StaticResource NumberConverter}}"/>
-                <DataGridTextColumn Header="Height" Width="*" Binding="{Binding Height, Converter={StaticResource HeightToCmConverter}}"/>
-                <DataGridTextColumn Header="Weight" Width="*" Binding="{Binding Weight, Converter={StaticResource WeightToKGConverter}}"/>
-                <DataGridTextColumn Header="Birth Date" Width="*" Binding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}"/>
-                <DataGridTextColumn Header="Age" Width="0.6*" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Number" Width="0.7*" Binding="{Binding Number, Converter={StaticResource NumberConverter}}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                <DataGridTextColumn Header="Height" Width="*" Binding="{Binding Height, Converter={StaticResource HeightToCmConverter}}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                <DataGridTextColumn Header="Weight" Width="*" Binding="{Binding Weight, Converter={StaticResource WeightToKGConverter}}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                <DataGridTextColumn Header="Birth Date" Width="*" Binding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}" ElementStyle="{StaticResource AlignToTheRight}"/>
+                <DataGridTextColumn Header="Age" Width="0.5*" Binding="{Binding Age}" ElementStyle="{StaticResource AlignToTheRight}"/>
             </DataGrid.Columns>
         </DataGrid>
 

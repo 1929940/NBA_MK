@@ -10,14 +10,12 @@ namespace NBA_Lib.JsonReader.JsonObjects
     {
         public string PlayerName { get; set; }
         public string Number { get; set; }
-
         private string position;
         public string Position
         {
             get { return position; }
             set { position = ConvertPosition(value); }
         }
-
         public string Height { get; set; }
         public int? Weight { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -35,8 +33,6 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 {'C' , "Center"},
             };
 
-            // Im sure this can be improved
-            // Sure needs to be commented
             if ((position?.Length == 1) || ((position?.Length > 1) && (position?.Length == 3) && (position?[1] == '-') ))
             {
                 foreach (var c in position)

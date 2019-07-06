@@ -29,7 +29,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
                 string merged = prefix + "-" + postfix;
 
                 output.Add(merged);
-            } while (min < max);
+            } while (min <= max);
 
             output.Reverse();
             return output;
