@@ -32,8 +32,6 @@ namespace NBA_MK.View
 
             Teams_CBX.ItemsSource = PlayerProfile.GetTeamIdNameDictionary(playerProfiles, franchises);
 
-            //Teams_CBX.SelectedIndex = Teams_CBX.Items.Count - 1;
-
             SetSelectedItem(Teams_CBX, teamID);
         }
         private void SetSelectedItem(ComboBox cbx, int teamID)
@@ -44,8 +42,13 @@ namespace NBA_MK.View
                 if (key == teamID)
                 {
                     Teams_CBX.SelectedItem = item;
+                    return;
                 }
             }
+
+            //Fixes a rare bug caused by inconsistencies in the results of CommonTeamRoster and PlayerProfile API
+            Teams_CBX.SelectedIndex = Teams_CBX.Items.Count - 1;
+            Seasons_CBX.SelectedIndex = Seasons_CBX.Items.Count - 1;
         }
 
         private void UpdateLabels(string season, int id)

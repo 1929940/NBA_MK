@@ -9,7 +9,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
     public class TeamRooster
     {
         public string PlayerName { get; set; }
-        public int? Number { get; set; }
+        public string Number { get; set; }
 
         private string position;
         public string Position

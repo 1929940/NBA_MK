@@ -15,7 +15,7 @@ namespace NBA_Lib.JsonReader.JsonObjects
             var players = ResultSets[0].RowSet.Select(r => new TeamRooster()
             {
                 PlayerName = r[3].ToString(),
-                Number = Convert.ToInt32(r[4]),
+                Number = r[4]?.ToString(),
                 Position = r[5]?.ToString(),
                 Height = r[6]?.ToString(),
                 Weight = Convert.ToInt32(r[7]),

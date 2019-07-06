@@ -77,6 +77,7 @@
             <DataGrid.Resources>
                 <Models:HeightToCmConverter x:Key="HeightToCmConverter"/>
                 <Models:WeightToKgConverter x:Key="WeightToKGConverter"/>
+                <Models:NumberConverter x:Key="NumberConverter"/>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -85,7 +86,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Player Name" Width="2*" Binding="{Binding PlayerName}"/>
                 <DataGridTextColumn Header="Position" Width="2.2*" Binding="{Binding Position}"/>
-                <DataGridTextColumn Header="Number" Width="*" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Number" Width="*" Binding="{Binding Number, Converter={StaticResource NumberConverter}}"/>
                 <DataGridTextColumn Header="Height" Width="*" Binding="{Binding Height, Converter={StaticResource HeightToCmConverter}}"/>
                 <DataGridTextColumn Header="Weight" Width="*" Binding="{Binding Weight, Converter={StaticResource WeightToKGConverter}}"/>
                 <DataGridTextColumn Header="Birth Date" Width="*" Binding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}"/>
