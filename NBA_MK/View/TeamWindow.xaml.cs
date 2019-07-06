@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace NBA_MK.View
 {
-    /// <summary>
-    /// Interaction logic for TeamWindow.xaml
-    /// </summary>
     public partial class TeamWindow : Window
     {
         readonly int teamID;
@@ -53,9 +50,11 @@ namespace NBA_MK.View
 
         private void TeamRoosterGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            // Add a messageBox
-            // Sorry there is no additional Data for coaches
-            if ((TeamRoosterGrid.SelectedItem as TeamRooster).Role == "Coach") return;
+            if ((TeamRoosterGrid.SelectedItem as TeamRooster).Role == "Coach")
+            {
+                MessageBox.Show("There is no additional data for coaches. \nTry choosing a player.", "Coaches and Trainers");
+                return;
+            }
 
             int playerID = (int)(TeamRoosterGrid.SelectedItem as TeamRooster).PlayerID;
 

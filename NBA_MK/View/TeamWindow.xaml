@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
+        xmlns:Models="clr-namespace:NBA_MK.Models"
         mc:Ignorable="d"
         Title="TeamWindow" Height="450" Width="800">
     <Grid>
@@ -67,35 +68,28 @@
         <!--Row 1-->
         <!--Col 1-->
 
-        <!--<DataGrid Name="SeasonsGrid" MinWidth="100"
-            Grid.Row="2" Grid.Column="1" RowHeight="20"
-            Margin="5,27,5,6" AlternatingRowBackground="WhiteSmoke"
-            AutoGenerateColumns="False" HeadersVisibility="Column"
-            IsReadOnly="True" GridLinesVisibility="None"  
-            SelectionMode="Single" Background="White"
-            SelectionChanged="SeasonsGrid_SelectionChanged">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridCell}">
-                    <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                </Style>
-            </DataGrid.Resources>-->
-
             <DataGrid Name="TeamRoosterGrid" Margin="5"
                       Grid.Row="1" Grid.Column="1"
                       AlternatingRowBackground="WhiteSmoke" AutoGenerateColumns="False"
                       HeadersVisibility="Column" IsReadOnly="True" GridLinesVisibility="None"
                       SelectionMode="Single" Background="White"
-                      MouseDoubleClick="TeamRoosterGrid_MouseDoubleClick">
+                      MouseDoubleClick="TeamRoosterGrid_MouseDoubleClick" RowHeight="20">
+            <DataGrid.Resources>
+                <Models:HeightToCmConverter x:Key="HeightToCmConverter"/>
+                <Models:WeightToKgConverter x:Key="WeightToKGConverter"/>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Player Name" Width="*" Binding="{Binding PlayerName}"/>
-                <DataGridTextColumn Header="Position" Binding="{Binding Position}"/>
-                <DataGridTextColumn Header="Number" Binding="{Binding Number}"/>
-                <DataGridTextColumn Header="Height" Binding="{Binding Height}"/>
-                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-                <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}"/>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
-                <!--Need PlayerID-->
+                <DataGridTextColumn Header="Player Name" Width="2*" Binding="{Binding PlayerName}"/>
+                <DataGridTextColumn Header="Position" Width="2.2*" Binding="{Binding Position}"/>
+                <DataGridTextColumn Header="Number" Width="*" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Height" Width="*" Binding="{Binding Height, Converter={StaticResource HeightToCmConverter}}"/>
+                <DataGridTextColumn Header="Weight" Width="*" Binding="{Binding Weight, Converter={StaticResource WeightToKGConverter}}"/>
+                <DataGridTextColumn Header="Birth Date" Width="*" Binding="{Binding BirthDate, StringFormat='yyyy-MM-dd'}"/>
+                <DataGridTextColumn Header="Age" Width="0.6*" Binding="{Binding Age}"/>
             </DataGrid.Columns>
         </DataGrid>
 

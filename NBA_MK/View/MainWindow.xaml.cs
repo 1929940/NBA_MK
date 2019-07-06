@@ -17,13 +17,8 @@ using NBA_Lib.JsonReader.JsonObjects;
 
 namespace NBA_MK.View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
     public partial class MainWindow : Window
     {
-        //List<Team> teams;
         List<Franchise> franchiseData;
         public MainWindow()
         {
@@ -31,34 +26,6 @@ namespace NBA_MK.View
 
             BindSeasons();
         }
-        public async Task testero()
-        {
-            var test = await JsonReader.GetTeamRosterAsync(1610612739, "2018-19");
-
-            foreach (var item in test)
-            {
-                Console.WriteLine(item);
-            }
-        }
-        public async Task testeroPlayero()
-        {
-            var test = await JsonReader.GetPlayerProfile(2544);
-
-            foreach (var item in test)
-            {
-                Console.WriteLine(item);
-            }
-        }
-        public async Task testFranchise()
-        {
-            var test = await JsonReader.GetFranchiseDataAsync();
-
-            foreach (var item in test)
-            {
-                Console.WriteLine(item);
-            }
-        }
-
         public async Task BindTeams(string season)
         {
             var teams = await JsonReader.GetTeamsAsync(season);

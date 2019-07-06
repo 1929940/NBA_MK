@@ -19,6 +19,9 @@ namespace NBA_Lib.JsonReader.JsonObjects
 
         public static IEnumerable<Team> CorrectStanding(IEnumerable<Team> team)
         {
+            /** LeagueStanding API in older seasons provides no information for teams standing.
+            This sets their standing based on the teams win/loss ratio in comparison to other teams **/
+
             if (team.All(t => t.Standing == 0))
             {
                 int index = 0;
