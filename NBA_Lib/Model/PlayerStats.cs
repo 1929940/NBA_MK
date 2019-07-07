@@ -9,32 +9,32 @@ namespace NBA_Lib.Model
         public string SeasonID { get; set; }
         public int TeamID { get; set; }
 
-        public int GamesPlayed { get; set; }
-        public int GamesStarted { get; set; }
-        public int MinutesPlayed { get; set; }
+        public int? GamesPlayed { get; set; }
+        public int? GamesStarted { get; set; }
+        public int? MinutesPlayed { get; set; }
 
-        public int FieldGoalsMade { get; set; }
-        public int FieldGoalsAttempted { get; set; }
-        public double FieldGoalsPercentage { get; set; }
+        public int? FieldGoalsMade { get; set; }
+        public int? FieldGoalsAttempted { get; set; }
+        public double? FieldGoalsPercentage { get; set; }
 
-        public int ThreePointFieldGoalsMade { get; set; }
-        public int ThreePointFieldGoalsAttempted { get; set; }
-        public double ThreePointsFieldGoalPercentage { get; set; }
+        public int? ThreePointFieldGoalsMade { get; set; }
+        public int? ThreePointFieldGoalsAttempted { get; set; }
+        public double? ThreePointsFieldGoalPercentage { get; set; }
 
-        public int FreeThrowsMade { get; set; }
-        public int FreeThrowsAttempted { get; set; }
-        public double FreeThrowPercentage { get; set; }
+        public int? FreeThrowsMade { get; set; }
+        public int? FreeThrowsAttempted { get; set; }
+        public double? FreeThrowPercentage { get; set; }
 
-        public int OffensiveRebounds { get; set; }
-        public int DefensiveRebounds { get; set; }
-        public int Rebounds { get; set; }
+        public int? OffensiveRebounds { get; set; }
+        public int? DefensiveRebounds { get; set; }
+        public int? Rebounds { get; set; }
 
-        public int Points { get; set; }
-        public int Assists { get; set; }
-        public int Steals { get; set; }
-        public int Blocks { get; set; }
-        public int Turnover { get; set; }
-        public int PersonalFouls { get; set; }
+        public int? Points { get; set; }
+        public int? Assists { get; set; }
+        public int? Steals { get; set; }
+        public int? Blocks { get; set; }
+        public int? Turnover { get; set; }
+        public int? PersonalFouls { get; set; }
 
         public static List<string> GetSeasons(List<PlayerStats> playerStats, int id = -1)
         {
@@ -51,18 +51,6 @@ namespace NBA_Lib.Model
 
             return output.ToList();
         }
-        //public static List<int> GetTeamIDs(List<PlayerStats> playerStats)
-        //{
-        //    List<int> output;
-
-        //    output = playerStats.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
-
-        //    output.Add(-1);
-
-        //    Console.WriteLine("Yes: GetTeamIDs is active");
-
-        //    return output;
-        //}
         private static string TranslateIdIntoName(int teamId, List<TeamData> teams)
         {
             if (teamId == 0) return string.Empty;
@@ -95,54 +83,53 @@ namespace NBA_Lib.Model
             {
                 if (profile.TeamID == teamId)
                 {
-                    output.GamesPlayed += 
-                        (profile.GamesPlayed == -100) ? 0 : profile.GamesPlayed;
-                    output.GamesStarted += 
-                        (profile.GamesStarted == -100) ? 0 : profile.GamesStarted;
-                    output.MinutesPlayed += 
-                        (profile.MinutesPlayed == -100) ? 0 : profile.MinutesPlayed;
+                    output.GamesPlayed = PlayerStats.AddValueToTotal(output.GamesPlayed, profile.GamesPlayed);
+                    output.GamesStarted = PlayerStats.AddValueToTotal(output.GamesStarted, profile.GamesStarted);
+                    output.MinutesPlayed = PlayerStats.AddValueToTotal(output.MinutesPlayed, profile.MinutesPlayed);
 
-                    output.FieldGoalsMade += 
-                        (profile.FieldGoalsMade == -100) ? 0 : profile.FieldGoalsMade;
-                    output.FieldGoalsAttempted += 
-                        (profile.FieldGoalsAttempted == -100) ? 0 : profile.FieldGoalsAttempted;
+                    output.FieldGoalsMade = PlayerStats.AddValueToTotal(output.FieldGoalsMade, profile.FieldGoalsMade);
+                    output.FieldGoalsAttempted = PlayerStats.AddValueToTotal(output.FieldGoalsAttempted, profile.FieldGoalsAttempted);
 
-                    output.ThreePointFieldGoalsMade += 
-                        (profile.ThreePointFieldGoalsMade == -100) ? 0 : profile.ThreePointFieldGoalsMade;
-                    output.ThreePointFieldGoalsAttempted += 
-                        (profile.ThreePointFieldGoalsAttempted == -100) ? 0 : profile.ThreePointFieldGoalsAttempted;
+                    output.ThreePointFieldGoalsMade = PlayerStats.AddValueToTotal(output.ThreePointFieldGoalsMade, profile.ThreePointFieldGoalsMade);
+                    output.ThreePointFieldGoalsAttempted = PlayerStats.AddValueToTotal(output.ThreePointFieldGoalsAttempted, profile.ThreePointFieldGoalsAttempted);
 
-                    output.FreeThrowsMade += 
-                        (profile.FreeThrowsMade == -100) ? 0 : profile.FreeThrowsMade;
-                    output.FreeThrowsAttempted += 
-                        (profile.FreeThrowsAttempted == -100) ? 0 : profile.FreeThrowsAttempted;
+                    output.FreeThrowsMade = PlayerStats.AddValueToTotal(output.FreeThrowsMade, profile.FreeThrowsMade);
+                    output.FreeThrowsAttempted = PlayerStats.AddValueToTotal(output.FreeThrowsAttempted, profile.FreeThrowsAttempted);
 
-                    output.OffensiveRebounds += 
-                        (profile.OffensiveRebounds == -100) ? 0 : profile.OffensiveRebounds;
-                    output.DefensiveRebounds += 
-                        (profile.DefensiveRebounds == -100) ? 0 : profile.DefensiveRebounds;
-                    output.Rebounds += 
-                        (profile.Rebounds == -100) ? 0 : profile.Rebounds;
+                    output.OffensiveRebounds = PlayerStats.AddValueToTotal(output.OffensiveRebounds, profile.OffensiveRebounds);
+                    output.DefensiveRebounds = PlayerStats.AddValueToTotal(output.DefensiveRebounds, profile.DefensiveRebounds);
+                    output.Rebounds = PlayerStats.AddValueToTotal(output.Rebounds, profile.Rebounds);
 
-                    output.Points += (profile.Points == -100) ? 0 : profile.Points;
-                    output.Assists += (profile.Assists == -100) ? 0 : profile.Assists;
-                    output.Blocks += (profile.Blocks == -100) ? 0 : profile.Blocks;
-                    output.Steals += (profile.Steals == -100) ? 0 : profile.Steals;
-                    output.Turnover += (profile.Turnover == -100) ? 0 : profile.Turnover;
-                    output.PersonalFouls += (profile.PersonalFouls == -100) ? 0 : profile.PersonalFouls;
+                    output.Points = PlayerStats.AddValueToTotal(output.Points, profile.Points);
+                    output.Assists = PlayerStats.AddValueToTotal(output.Assists, profile.Assists);
+                    output.Blocks = PlayerStats.AddValueToTotal(output.Blocks, profile.Blocks);
+                    output.Steals = PlayerStats.AddValueToTotal(output.Steals, profile.Steals);
+                    output.Turnover = PlayerStats.AddValueToTotal(output.Turnover, profile.Turnover);
+                    output.PersonalFouls = PlayerStats.AddValueToTotal(output.PersonalFouls, profile.PersonalFouls);
                 }
             }
             output.FieldGoalsPercentage = (output.FieldGoalsAttempted > 0) ?
-                Math.Round((double)output.FieldGoalsMade / (double)output.FieldGoalsAttempted, 3) : 0;
+                (double?)Math.Round((double)output.FieldGoalsMade / (double)output.FieldGoalsAttempted, 3) : null;
 
-            output.ThreePointsFieldGoalPercentage = (output.ThreePointFieldGoalsAttempted > 0) ? 
-                Math.Round((double)output.ThreePointFieldGoalsMade / (double)output.ThreePointFieldGoalsAttempted, 3) : 0;
+            output.ThreePointsFieldGoalPercentage = (output.ThreePointFieldGoalsAttempted > 0) ?
+                (double?)Math.Round((double)output.ThreePointFieldGoalsMade / (double)output.ThreePointFieldGoalsAttempted, 3) : null;
 
             output.FreeThrowPercentage = (output.FreeThrowsAttempted > 0) ?
-                Math.Round((double)output.FreeThrowsMade / (double)output.FreeThrowsAttempted, 3) : 0;
+                (double?)Math.Round((double)output.FreeThrowsMade / (double)output.FreeThrowsAttempted, 3) : null;
 
             return output;
         }
+
+        private static int? AddValueToTotal(int? outputVal, int? profileVal)
+        {
+            if (profileVal != null)
+            {
+                if (outputVal == null) outputVal = 0;
+                return outputVal += profileVal;
+            }
+            return null;
+        }
+
         public override string ToString()
         {
             string output = String.Format($"SeasonID: {SeasonID}\n" +
