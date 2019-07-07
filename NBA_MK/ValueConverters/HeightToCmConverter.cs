@@ -12,10 +12,8 @@ namespace NBA_MK.ValueConverters
             //1in = 2.54cm
             //input formats: 0, 0-0, 0-00
 
-            if (value is null)
-            {
-                return null;
-            }
+            if (value is null) return null;
+
             string val = value.ToString();
 
             double feet = double.Parse(val[0].ToString());

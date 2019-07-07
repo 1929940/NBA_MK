@@ -19,7 +19,7 @@ namespace NBA_MK.View
 {
     public partial class MainWindow : Window
     {
-        List<Franchise> franchiseData;
+        List<TeamData> teamData;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,14 +32,14 @@ namespace NBA_MK.View
         {
             var teams = await JsonReader.GetTeamsAsync(season);
 
-            TeamGridWest.ItemsSource = Team.CorrectStanding(teams.Where(t => t.Conference == "West"));
-            TeamGridEast.ItemsSource = Team.CorrectStanding(teams.Where(t => t.Conference == "East"));
+            TeamGridWest.ItemsSource = TeamStats.CorrectStanding(teams.Where(t => t.Conference == "West"));
+            TeamGridEast.ItemsSource = TeamStats.CorrectStanding(teams.Where(t => t.Conference == "East"));
         }
         private async Task BindSeasons()
         {
-            franchiseData = await JsonReader.GetFranchiseDataAsync();
+            teamData = await JsonReader.GetFranchiseDataAsync();
 
-            var season = Franchise.GetActiveSeasonsList(franchiseData);
+            var season = TeamData.GetActiveSeasons(teamData);
 
             SeasonsGrid.ItemsSource = season;
 
@@ -53,22 +53,22 @@ namespace NBA_MK.View
 
         private void TeamGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Team team;
+            TeamStats team;
             string selectedSeason = SeasonsGrid.SelectedItem.ToString();
 
             if ((sender as DataGrid).Name == "TeamGridWest")
             {
-                team = (TeamGridWest.SelectedItem as Team);
+                team = (TeamGridWest.SelectedItem as TeamStats);
             }
             else
             {
-                team = (TeamGridEast.SelectedItem as Team);
+                team = (TeamGridEast.SelectedItem as TeamStats);
             }
 
-            List<string> selectedTeamSeasons = 
-                Franchise.GetActiveSeasonsList(franchiseData.Where(p => p.TeamID == team.TeamID).ToList());
+            List<string> selectedTeamsSeasons = 
+                TeamData.GetActiveSeasons(teamData.Where(p => p.TeamID == team.TeamID).ToList());
 
-            TeamWindow teamWindow = new TeamWindow(team, selectedTeamSeasons, selectedSeason, franchiseData );
+            TeamWindow teamWindow = new TeamWindow(team, selectedTeamsSeasons, selectedSeason, teamData );
             teamWindow.ShowDialog();
         }
     }

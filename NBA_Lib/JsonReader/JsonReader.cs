@@ -11,7 +11,7 @@ namespace NBA_Lib.JsonReader
     public static class JsonReader
     {
         //LeagueStandings
-        public static async Task<List<Team>> GetTeamsAsync(string season)
+        public static async Task<List<TeamStats>> GetTeamsAsync(string season)
         {
             using (var client = new HttpClient())
             {
@@ -24,14 +24,14 @@ namespace NBA_Lib.JsonReader
 
                 string content = await client.GetStringAsync(link);
 
-                TeamRootObject output = JsonConvert.DeserializeObject<TeamRootObject>(content);
+                LeagueStandingsRootObject output = JsonConvert.DeserializeObject<LeagueStandingsRootObject>(content);
 
-                return output.ExtractTeams(season);
+                return output.ExtractTeamStats(season);
             }
         }
 
         //Franchise History
-        public static async Task<List<Franchise>> GetFranchiseDataAsync()
+        public static async Task<List<TeamData>> GetFranchiseDataAsync()
         {
             using (var client = new HttpClient())
             {
@@ -46,12 +46,12 @@ namespace NBA_Lib.JsonReader
 
                 FranchiseHistoryRootObject output = JsonConvert.DeserializeObject<FranchiseHistoryRootObject>(content);
 
-                return output.ExtractFranchises();
+                return output.ExtractTeamData();
             }
         }
 
         //CommonTeamRooster
-        public static async Task<List<TeamRooster>> GetTeamRosterAsync(int teamID, string season)
+        public static async Task<List<TeamMembers>> GetTeamRosterAsync(int teamID, string season)
         {
             using (var client = new HttpClient())
             {
@@ -66,11 +66,11 @@ namespace NBA_Lib.JsonReader
 
                 TeamRoosterRootObject output = JsonConvert.DeserializeObject<TeamRoosterRootObject>(content);
 
-                return output.ExtractRooster();
+                return output.ExtractTeamMembers();
             }
         }
         //PlayerProfileV2
-        public static async Task<List<PlayerProfile>> GetPlayerProfile(int playerID)
+        public static async Task<List<PlayerStats>> GetPlayerProfile(int playerID)
         {
             using (var client = new HttpClient())
             {

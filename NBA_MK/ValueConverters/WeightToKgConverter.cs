@@ -10,10 +10,7 @@ namespace NBA_MK.ValueConverters
         {
             // 1 pound = 0.453592kg
 
-            if (value is null)
-            {
-                return null;
-            }
+            if (value is null) return null;
 
             return (int)(System.Convert.ToDouble(value) * 0.453592) + " kg";
         }

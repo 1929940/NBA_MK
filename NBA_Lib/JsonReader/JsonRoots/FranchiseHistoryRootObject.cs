@@ -9,9 +9,9 @@ namespace NBA_Lib.JsonReader.JsonRoots
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        public List<Franchise> ExtractFranchises()
+        public List<TeamData> ExtractTeamData()
         {
-            var activeFranchises = ResultSets[0].RowSet.Select(f => new Franchise()
+            var activeFranchises = ResultSets[0].RowSet.Select(f => new TeamData()
             {
                 TeamID = Convert.ToInt32(f[1]),
                 TeamName = (f[2] + " " + f[3]),
@@ -19,14 +19,14 @@ namespace NBA_Lib.JsonReader.JsonRoots
                 Max_Year = Convert.ToInt32(f[5])
             });
 
-            var defunctFranchises = ResultSets[1].RowSet.Select(f => new Franchise()
+            var defunctFranchises = ResultSets[1].RowSet.Select(f => new TeamData()
             {
                 TeamID = Convert.ToInt32(f[1]),
                 TeamName = (f[2] + " " + f[3]),
                 Min_Year = Convert.ToInt32(f[4]),
                 Max_Year = Convert.ToInt32(f[5])
             });
-            var output = new List<Franchise>();
+            var output = new List<TeamData>();
 
             output.AddRange(activeFranchises);
             output.AddRange(defunctFranchises);

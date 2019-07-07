@@ -9,9 +9,9 @@ namespace NBA_Lib.JsonReader.JsonRoots
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        public List<PlayerProfile> ExtractPlayerStats()
+        public List<PlayerStats> ExtractPlayerStats()
         {
-            var perSeason = ResultSets[0].RowSet.Select(p => new PlayerProfile()
+            var perSeason = ResultSets[0].RowSet.Select(p => new PlayerStats()
             {
                 //When a player played in more than one team in a season
                 //PlayerProfileV2 API returns multiple entries for that season.
@@ -21,6 +21,8 @@ namespace NBA_Lib.JsonReader.JsonRoots
                 //This code can be improved, however casting obj to (int?) and (obj as int?) seem to fail
                 //Perhaps if I try adjusting resultset to give me a list of string instead of obj, this will help?
                 //Parse wont work, TryParse might be an chaotic way to do it but perhaps?
+
+                //Tagging -100 as 'null'. Yeah, I know. Ive figured it out a bit late. 
 
                 TeamID = Convert.ToInt32(p[3]),
                 SeasonID = p[1].ToString(),
@@ -54,7 +56,7 @@ namespace NBA_Lib.JsonReader.JsonRoots
 
             });
             // PlayerProfile with total statistics for all seasons.
-            PlayerProfile inTotal = ResultSets[1].RowSet.Select(p => new PlayerProfile()
+            PlayerStats inTotal = ResultSets[1].RowSet.Select(p => new PlayerStats()
             {
                 TeamID = -1,
                 //SeasonID = p[1].ToString(), This is null

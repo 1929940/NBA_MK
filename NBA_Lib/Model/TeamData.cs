@@ -4,17 +4,17 @@ using System.Linq;
 
 namespace NBA_Lib.Model
 {
-    public class Franchise
+    public class TeamData
     {
         public int TeamID { get; set; }
         public string TeamName { get; set; }
         public int Min_Year { get; set; }
         public int Max_Year { get; set; }
 
-        public static List<string> GetActiveSeasonsList(List<Franchise> franchises)
+        public static List<string> GetActiveSeasons(List<TeamData> teams)
         {
-            int min = franchises.Min(s => s.Min_Year);
-            int max = franchises.Max(s => s.Max_Year);
+            int min = teams.Min(s => s.Min_Year);
+            int max = teams.Max(s => s.Max_Year);
 
             List<string> output = new List<string>();
 

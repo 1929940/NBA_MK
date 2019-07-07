@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace NBA_Lib.Model
 {
-    public class PlayerProfile
+    public class PlayerStats
     {
         public string SeasonID { get; set; }
         public int TeamID { get; set; }
@@ -36,26 +36,26 @@ namespace NBA_Lib.Model
         public int Turnover { get; set; }
         public int PersonalFouls { get; set; }
 
-        public static List<string> GetSeasons(List<PlayerProfile> list, int id = -1)
+        public static List<string> GetSeasons(List<PlayerStats> playerStats, int id = -1)
         {
             // A player can play in more than one team per season
             // HashSet ensures there are no duplicate seasons
 
             HashSet<string> output;
 
-            if (id != -1) output = list.Where(p => p.TeamID == id).Select(p => p.SeasonID).ToHashSet<string>();
-            else output = list.Select(p => p.SeasonID).ToHashSet<string>();
+            if (id != -1) output = playerStats.Where(p => p.TeamID == id).Select(p => p.SeasonID).ToHashSet<string>();
+            else output = playerStats.Select(p => p.SeasonID).ToHashSet<string>();
 
             output.Remove(null);
             output.Add("All Seasons");
 
             return output.ToList();
         }
-        public static List<int> GetTeamIDs(List<PlayerProfile> list)
+        public static List<int> GetTeamIDs(List<PlayerStats> playerStats)
         {
             List<int> output;
 
-            output = list.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
+            output = playerStats.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
 
             output.Add(-1);
 
@@ -63,35 +63,35 @@ namespace NBA_Lib.Model
 
             return output;
         }
-        private static string TranslateIdIntoName(int id, List<Franchise> franchises)
+        private static string TranslateIdIntoName(int teamId, List<TeamData> teams)
         {
-            if (id == 0) return string.Empty;
+            if (teamId == 0) return string.Empty;
 
-            if (id == -1) return "All Teams";
+            if (teamId == -1) return "All Teams";
 
-            var tmp = franchises.FirstOrDefault(t => t.TeamID == id).TeamName;
+            var tmp = teams.FirstOrDefault(t => t.TeamID == teamId).TeamName;
 
             return tmp;
         }
-        public static Dictionary<int, string> GetTeamIdNameDictionary(List<PlayerProfile> playerProfiles, List<Franchise> franchises)
+        public static Dictionary<int, string> GetTeamIdNameDictionary(List<PlayerStats> playerStats, List<TeamData> teams)
         {
             Dictionary<int, string> output = new Dictionary<int, string>();
 
-            foreach (var player in playerProfiles)
+            foreach (var player in playerStats)
             {
-                int id = player.TeamID;
-                string name = TranslateIdIntoName(id, franchises);
+                int teamId = player.TeamID;
+                string name = TranslateIdIntoName(teamId, teams);
 
-                if  (!output.Keys.Contains(id) && id != 0)
-                    output.Add(id, name);
+                if  (!output.Keys.Contains(teamId) && teamId != 0)
+                    output.Add(teamId, name);
             }
             return output;
         }
-        public static PlayerProfile GetPlayersTotalStatsWhileInTeam(int teamId, List<PlayerProfile> playerProfiles)
+        public static PlayerStats GetPlayersTotalStatsWhileInTeam(int teamId, List<PlayerStats> playerStats)
         {
-            PlayerProfile output = new PlayerProfile();
+            PlayerStats output = new PlayerStats();
 
-            foreach (var profile in playerProfiles)
+            foreach (var profile in playerStats)
             {
                 if (profile.TeamID == teamId)
                 {

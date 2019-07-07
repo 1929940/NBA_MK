@@ -44,15 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Franchise.cs" />
+    <Compile Include="Model\TeamData.cs" />
     <Compile Include="JsonReader\JsonRoots\FranchiseHistoryRootObject.cs" />
-    <Compile Include="Model\PlayerProfile.cs" />
+    <Compile Include="Model\PlayerStats.cs" />
     <Compile Include="JsonReader\JsonRoots\PlayerProfileRootObject.cs" />
     <Compile Include="JsonReader\JsonRoots\ResultSet.cs" />
-    <Compile Include="Model\Team.cs" />
-    <Compile Include="Model\TeamRooster.cs" />
+    <Compile Include="Model\TeamStats.cs" />
+    <Compile Include="Model\TeamMembers.cs" />
     <Compile Include="JsonReader\JsonRoots\TeamRoosterRootObject.cs" />
-    <Compile Include="JsonReader\JsonRoots\TeamRootObject.cs" />
+    <Compile Include="JsonReader\JsonRoots\LeagueStandingsRootObject.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

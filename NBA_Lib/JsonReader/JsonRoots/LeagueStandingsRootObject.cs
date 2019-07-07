@@ -5,18 +5,20 @@ using System.Linq;
 
 namespace NBA_Lib.JsonReader.JsonRoots
 {
-    public class TeamRootObject
+    public class LeagueStandingsRootObject
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        public List<Team> ExtractTeams(string season)
+        public List<TeamStats> ExtractTeamStats(string season)
         {
             int  year = Convert.ToInt32(season.Substring(0, 4));
-            IEnumerable<Team> output;
+            IEnumerable<TeamStats> output;
 
+            //Conferences where introduced in 1970
+            //Before that divisions where used
             if (year > 1969)
             {
-                output = ResultSets[0].RowSet.Select(s => new Team()
+                output = ResultSets[0].RowSet.Select(s => new TeamStats()
                 {
                     TeamID = Convert.ToInt32(s[2]),
                     TeamName = (s[3] + " " + s[4]),
@@ -30,7 +32,7 @@ namespace NBA_Lib.JsonReader.JsonRoots
             }
             else
             {
-                output = ResultSets[0].RowSet.Select(s => new Team()
+                output = ResultSets[0].RowSet.Select(s => new TeamStats()
                 {
                     TeamID = Convert.ToInt32(s[2]),
                     TeamName = (s[3] + " " + s[4]),

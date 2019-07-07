@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NBA_Lib.Model
 {
-    public class Team
+    public class TeamStats
     {
         public int TeamID { get; set; }
         public string TeamName { get; set; }
@@ -17,7 +17,7 @@ namespace NBA_Lib.Model
         public double Ratio { get; set; }
         public int? Streak { get; set; }
 
-        public static IEnumerable<Team> CorrectStanding(IEnumerable<Team> team)
+        public static IEnumerable<TeamStats> CorrectStanding(IEnumerable<TeamStats> team)
         {
             /** LeagueStanding API in older seasons provides no information for teams standing.
             This sets their standing based on the teams win/loss ratio in comparison to other teams **/

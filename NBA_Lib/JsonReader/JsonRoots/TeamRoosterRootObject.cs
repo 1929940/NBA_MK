@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NBA_Lib.JsonReader.JsonRoots
 {
@@ -11,9 +9,9 @@ namespace NBA_Lib.JsonReader.JsonRoots
     {
         public List<ResultSet> ResultSets { get; set; }
 
-        public List<TeamRooster> ExtractRooster()
+        public List<TeamMembers> ExtractTeamMembers()
         {
-            var players = ResultSets[0].RowSet.Select(r => new TeamRooster()
+            var players = ResultSets[0].RowSet.Select(r => new TeamMembers()
             {
                 PlayerName = r[3].ToString(),
                 Number = r[4]?.ToString(),
@@ -26,7 +24,7 @@ namespace NBA_Lib.JsonReader.JsonRoots
                 Role = "Player"
             });
 
-            var coaches = ResultSets[1].RowSet.Select(c => new TeamRooster()
+            var coaches = ResultSets[1].RowSet.Select(c => new TeamMembers()
             {
                 PlayerName = c[5].ToString(),
                 Position = c[8].ToString(),

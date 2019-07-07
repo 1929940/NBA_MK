@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NBA_Lib.Model
 {
-    public class TeamRooster
+    public class TeamMembers
     {
         public string PlayerName { get; set; }
         public string Number { get; set; }
