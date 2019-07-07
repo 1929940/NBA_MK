@@ -51,18 +51,18 @@ namespace NBA_Lib.Model
 
             return output.ToList();
         }
-        public static List<int> GetTeamIDs(List<PlayerStats> playerStats)
-        {
-            List<int> output;
+        //public static List<int> GetTeamIDs(List<PlayerStats> playerStats)
+        //{
+        //    List<int> output;
 
-            output = playerStats.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
+        //    output = playerStats.Select(p => p.TeamID).Where(p => p != -1).Distinct().ToList();
 
-            output.Add(-1);
+        //    output.Add(-1);
 
-            Console.WriteLine("Yes: GetTeamIDs is active");
+        //    Console.WriteLine("Yes: GetTeamIDs is active");
 
-            return output;
-        }
+        //    return output;
+        //}
         private static string TranslateIdIntoName(int teamId, List<TeamData> teams)
         {
             if (teamId == 0) return string.Empty;
