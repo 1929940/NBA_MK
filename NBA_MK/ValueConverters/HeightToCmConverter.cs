@@ -16,10 +16,12 @@ namespace NBA_MK.ValueConverters
 
             string val = value.ToString();
 
+            if (val.Length == 0) return null;
+
             double feet = double.Parse(val[0].ToString());
             double inch = 0;
 
-            if (val[1] == '-')
+            if (val.Length > 1 && val[1] == '-')
             {
                 inch = double.Parse(val.Substring(2));
             }

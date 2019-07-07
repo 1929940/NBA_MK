@@ -4,11 +4,11 @@ using System.Windows.Data;
 
 namespace NBA_MK.ValueConverters
 {
-    class NumberConverter : IValueConverter
+    public class NumberConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (value as string)?.Replace("-",", ");
+            return value?.ToString().Replace("-",", ");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

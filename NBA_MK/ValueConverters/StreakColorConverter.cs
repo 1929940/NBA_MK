@@ -8,15 +8,19 @@ using System.Windows.Data;
 
 namespace NBA_MK.ValueConverters
 {
-    class StreakColorConverter : IValueConverter
+    public class StreakColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) return System.Windows.Media.Brushes.Black;
+            if (value == null || !(value is int)) return System.Windows.Media.Brushes.Black;
 
             if ((int)value > 0)
             {
                 return System.Windows.Media.Brushes.DarkGreen;
+            }
+            else if((int)value == 0)
+            {
+                return System.Windows.Media.Brushes.Black;
             }
             else
             {
