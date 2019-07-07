@@ -64,7 +64,12 @@
     <Compile Include="Converters\NumberConverter_Test.cs" />
     <Compile Include="Converters\StreakColorConverter_Test.cs" />
     <Compile Include="Converters\WeightToKgConverter_Test.cs" />
+    <Compile Include="Extractors_Test.cs" />
     <Compile Include="JsonReader_Test.cs" />
+    <Compile Include="MockData.cs" />
+    <Compile Include="Models\TeamData_Test.cs" />
+    <Compile Include="Models\TeamMembers_Test.cs" />
+    <Compile Include="Models\TeamStats_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

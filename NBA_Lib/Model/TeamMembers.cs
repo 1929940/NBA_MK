@@ -23,7 +23,7 @@ namespace NBA_Lib.Model
         public int? PlayerID { get; set; }
         public string Role { get; set; }
 
-        private string ConvertPosition(string position)
+        public string ConvertPosition(string position)
         {
             string output = "";
             var dict = new Dictionary<char, string>()

@@ -25,6 +25,17 @@ namespace NBA_MK.View
             InitializeComponent();
 
             BindSeasons();
+
+            object[] arr = new object[3];
+
+            arr[2] = "hi";
+
+            var list = arr.ToList();
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
 
 
