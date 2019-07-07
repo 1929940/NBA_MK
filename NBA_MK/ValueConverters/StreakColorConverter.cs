@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace NBA_MK.Models
+namespace NBA_MK.ValueConverters
 {
     class StreakColorConverter : IValueConverter
     {

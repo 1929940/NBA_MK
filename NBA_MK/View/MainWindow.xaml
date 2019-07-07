@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
-        xmlns:Models="clr-namespace:NBA_MK.Models"
+        xmlns:Converters="clr-namespace:NBA_MK.ValueConverters"
         mc:Ignorable="d"
         Title="MainWindow" Height="501" Width="800">
     <Grid Margin="5">
@@ -36,7 +36,7 @@
                   RowHeight="20">
 
                     <DataGrid.Resources>
-                        <Models:StreakColorConverter x:Key="StreakColorConverter"/>
+                        <Converters:StreakColorConverter x:Key="StreakColorConverter"/>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -72,7 +72,7 @@
                   MouseDoubleClick="TeamGrid_MouseDoubleClick"
                   RowHeight="20">
                     <DataGrid.Resources>
-                        <Models:StreakColorConverter x:Key="StreakColorConverter"/>
+                        <Converters:StreakColorConverter x:Key="StreakColorConverter"/>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Setter Property="BorderThickness" Value="0" />
                             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>

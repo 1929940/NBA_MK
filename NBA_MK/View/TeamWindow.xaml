@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBA_MK.View"
-        xmlns:Models="clr-namespace:NBA_MK.Models"
+        xmlns:Converters="clr-namespace:NBA_MK.ValueConverters"
         mc:Ignorable="d"
         Title="TeamWindow" Height="450" Width="800">
     <Grid>
@@ -75,9 +75,9 @@
                       SelectionMode="Single" Background="White"
                       MouseDoubleClick="TeamRoosterGrid_MouseDoubleClick" RowHeight="20">
             <DataGrid.Resources>
-                <Models:HeightToCmConverter x:Key="HeightToCmConverter"/>
-                <Models:WeightToKgConverter x:Key="WeightToKGConverter"/>
-                <Models:NumberConverter x:Key="NumberConverter"/>
+                <Converters:HeightToCmConverter x:Key="HeightToCmConverter"/>
+                <Converters:WeightToKgConverter x:Key="WeightToKGConverter"/>
+                <Converters:NumberConverter x:Key="NumberConverter"/>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>

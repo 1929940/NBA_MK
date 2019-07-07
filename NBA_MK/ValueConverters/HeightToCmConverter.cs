@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace NBA_MK.Models
+namespace NBA_MK.ValueConverters
 {
     public class HeightToCmConverter : IValueConverter
     {
