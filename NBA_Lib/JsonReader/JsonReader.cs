@@ -1,4 +1,5 @@
-﻿using NBA_Lib.JsonReader.JsonObjects;
+﻿using NBA_Lib.JsonReader.JsonRoots;
+using NBA_Lib.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

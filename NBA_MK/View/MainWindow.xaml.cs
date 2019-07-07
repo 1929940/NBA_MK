@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using NBA_Lib.JsonReader;
-using NBA_Lib.JsonReader.JsonObjects;
+using NBA_Lib.Model;
 
 namespace NBA_MK.View
 {

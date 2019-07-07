@@ -44,15 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonReader\JsonObjects\Franchise.cs" />
-    <Compile Include="JsonReader\JsonObjects\FranchiseHistoryRootObject.cs" />
-    <Compile Include="JsonReader\JsonObjects\PlayerProfile.cs" />
-    <Compile Include="JsonReader\JsonObjects\PlayerProfileRootObject.cs" />
-    <Compile Include="JsonReader\JsonObjects\ResultSet.cs" />
-    <Compile Include="JsonReader\JsonObjects\Team.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamRooster.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamRoosterRootObject.cs" />
-    <Compile Include="JsonReader\JsonObjects\TeamRootObject.cs" />
+    <Compile Include="Model\Franchise.cs" />
+    <Compile Include="JsonReader\JsonRoots\FranchiseHistoryRootObject.cs" />
+    <Compile Include="Model\PlayerProfile.cs" />
+    <Compile Include="JsonReader\JsonRoots\PlayerProfileRootObject.cs" />
+    <Compile Include="JsonReader\JsonRoots\ResultSet.cs" />
+    <Compile Include="Model\Team.cs" />
+    <Compile Include="Model\TeamRooster.cs" />
+    <Compile Include="JsonReader\JsonRoots\TeamRoosterRootObject.cs" />
+    <Compile Include="JsonReader\JsonRoots\TeamRootObject.cs" />
     <Compile Include="JsonReader\JsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using NBA_Lib.JsonReader;
-using NBA_Lib.JsonReader.JsonObjects;
+using NBA_Lib.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

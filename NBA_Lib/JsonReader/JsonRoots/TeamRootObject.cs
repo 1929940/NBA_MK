@@ -1,8 +1,9 @@
-﻿using System;
+﻿using NBA_Lib.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NBA_Lib.JsonReader.JsonObjects
+namespace NBA_Lib.JsonReader.JsonRoots
 {
     public class TeamRootObject
     {

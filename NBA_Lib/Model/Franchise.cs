@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NBA_Lib.JsonReader.JsonObjects
+namespace NBA_Lib.Model
 {
     public class Franchise
     {
