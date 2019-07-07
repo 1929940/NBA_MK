@@ -30,14 +30,14 @@ namespace NBA_MK.View
 
         public async Task BindTeams(string season)
         {
-            var teams = await JsonReader.GetTeamsAsync(season);
+            var teams = (await JsonReader.GetTeamsAsync(season)).ExtractTeamStats(season);
 
             TeamGridWest.ItemsSource = TeamStats.CorrectStanding(teams.Where(t => t.Conference == "West"));
             TeamGridEast.ItemsSource = TeamStats.CorrectStanding(teams.Where(t => t.Conference == "East"));
         }
         private async Task BindSeasons()
         {
-            teamData = await JsonReader.GetFranchiseDataAsync();
+            teamData = (await JsonReader.GetFranchiseDataAsync()).ExtractTeamData();
 
             var season = TeamData.GetActiveSeasons(teamData);
 

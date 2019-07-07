@@ -11,7 +11,7 @@ namespace NBA_Lib.JsonReader
     public static class JsonReader
     {
         //LeagueStandings
-        public static async Task<List<TeamStats>> GetTeamsAsync(string season)
+        public static async Task<LeagueStandingsRootObject> GetTeamsAsync(string season)
         {
             using (var client = new HttpClient())
             {
@@ -26,12 +26,12 @@ namespace NBA_Lib.JsonReader
 
                 LeagueStandingsRootObject output = JsonConvert.DeserializeObject<LeagueStandingsRootObject>(content);
 
-                return output.ExtractTeamStats(season);
+                return output;
             }
         }
 
         //Franchise History
-        public static async Task<List<TeamData>> GetFranchiseDataAsync()
+        public static async Task<FranchiseHistoryRootObject> GetFranchiseDataAsync()
         {
             using (var client = new HttpClient())
             {
@@ -46,12 +46,12 @@ namespace NBA_Lib.JsonReader
 
                 FranchiseHistoryRootObject output = JsonConvert.DeserializeObject<FranchiseHistoryRootObject>(content);
 
-                return output.ExtractTeamData();
+                return output;
             }
         }
 
         //CommonTeamRooster
-        public static async Task<List<TeamMembers>> GetTeamRosterAsync(int teamID, string season)
+        public static async Task<TeamRoosterRootObject> GetTeamRosterAsync(int teamID, string season)
         {
             using (var client = new HttpClient())
             {
@@ -66,11 +66,11 @@ namespace NBA_Lib.JsonReader
 
                 TeamRoosterRootObject output = JsonConvert.DeserializeObject<TeamRoosterRootObject>(content);
 
-                return output.ExtractTeamMembers();
+                return output;
             }
         }
         //PlayerProfileV2
-        public static async Task<List<PlayerStats>> GetPlayerProfile(int playerID)
+        public static async Task<PlayerProfileRootObject> GetPlayerProfile(int playerID)
         {
             using (var client = new HttpClient())
             {
@@ -85,7 +85,7 @@ namespace NBA_Lib.JsonReader
 
                 PlayerProfileRootObject output = JsonConvert.DeserializeObject<PlayerProfileRootObject>(content);
 
-                return output.ExtractPlayerStats();
+                return output;
             }
         }
     }

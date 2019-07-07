@@ -28,7 +28,7 @@ namespace NBA_MK.View
 
         private async Task BindControls(int id, List<TeamData> teamData, int teamID)
         {
-            playerStats = await JsonReader.GetPlayerProfile(id);
+            playerStats = (await JsonReader.GetPlayerProfile(id)).ExtractPlayerStats();
 
             Teams_CBX.ItemsSource = PlayerStats.GetTeamIdNameDictionary(playerStats, teamData);
 

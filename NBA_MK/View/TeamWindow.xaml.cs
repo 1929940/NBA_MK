@@ -38,7 +38,7 @@ namespace NBA_MK.View
         }
         private async Task BindRooster(int teamID, string season)
         {
-            var rooster = await JsonReader.GetTeamRosterAsync(teamID, season);
+            var rooster = (await JsonReader.GetTeamRosterAsync(teamID, season)).ExtractTeamMembers();
 
             TeamRoosterGrid.ItemsSource = rooster;
 
