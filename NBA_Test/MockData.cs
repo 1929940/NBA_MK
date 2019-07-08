@@ -44,7 +44,6 @@ namespace NBA_Test
             object[] La = new object[6];
 
 
-
             Chicago[1] = 111;
             Chicago[2] = "Chicago";
             Chicago[3] = "Bulls";

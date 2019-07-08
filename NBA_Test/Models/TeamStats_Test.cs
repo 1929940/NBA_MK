@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using NBA_Lib.Model;
 
@@ -13,6 +10,8 @@ namespace NBA_Test.Models
         [Fact]
         public void CorrectStanding_ShouldWork_TeamsWithStanding()
         {
+            // Standing should remain unchanged.
+
             var teams = new MockData().LeagueStandings.ExtractTeamStats("2010-11");
 
             var tmp = TeamStats.CorrectStanding(teams.Where(t => t.Standing != 0));
@@ -25,6 +24,8 @@ namespace NBA_Test.Models
         [Fact]
         public void CorrectStanding_ShouldWork_TeamsWithoutStanding()
         {
+            // Standing should get adjusted. 
+
             var teams = new MockData().LeagueStandings.ExtractTeamStats("2010-11");
 
             var tmp = TeamStats.CorrectStanding(teams.Where(t => t.Standing == 0));
@@ -37,6 +38,8 @@ namespace NBA_Test.Models
         [Fact]
         public void CorrectStanding_ShouldWork_TeamsWithAndWithoutStanding()
         {
+            // Standing should remain unchanged. 
+
             var teams = new MockData().LeagueStandings.ExtractTeamStats("2010-11");
 
             var actual = TeamStats.CorrectStanding(teams).ToList();

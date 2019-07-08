@@ -18,15 +18,13 @@ namespace NBA_Test.Models
             Assert.Equal("All Teams", actual[-1]);
             Assert.Equal("Chicago Bulls", actual[111]);
             Assert.Equal("LA Clippers", actual[444]);
-
-
         }
 
         [Theory]
         [InlineData()]
         [InlineData(111)]
         [InlineData(222)]
-        public void GetTeamSeasons_ShouldWork_NoInvalidData(int teamId = -1)
+        public void GetTeamSeasons_ShouldWork_CheckResultsForInvalidData(int teamId = -1)
         {
             var playerStats = new MockData().PlayerProfile.ExtractPlayerStats();
 
@@ -41,7 +39,7 @@ namespace NBA_Test.Models
         [InlineData(2, 0)]
         [InlineData(3,111)]
         [InlineData(1,222)]
-        public void GetTeamSeasons_ShouldWork_DataCountCheck(int expected , int teamId = -1)
+        public void GetTeamSeasons_ShouldWork_CheckNumberOfSeasonsReturned(int expected , int teamId = -1)
         {
             var playerStats = new MockData().PlayerProfile.ExtractPlayerStats();
 
@@ -55,6 +53,9 @@ namespace NBA_Test.Models
         [InlineData(444, 3)]
         public void GetPlayersTotalStatsWhileInTeam_ShouldWork_VerifyReturnData(int teamId, int? expected)
         {
+            //Testing behaviour by comparing results 
+            //when a property in playerProfile is null, or has value.
+
             var playerStats = new MockData().PlayerProfile.ExtractPlayerStats();
 
             var actual = PlayerStats.GetPlayersTotalStatsWhileInTeam(teamId, playerStats);
