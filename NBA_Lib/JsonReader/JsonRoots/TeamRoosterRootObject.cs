@@ -11,13 +11,15 @@ namespace NBA_Lib.JsonReader.JsonRoots
 
         public List<TeamMembers> ExtractTeamMembers()
         {
+            int discard;
+
             var players = ResultSets[0].RowSet.Select(r => new TeamMembers()
             {
                 PlayerName = r[3].ToString(),
                 Number = r[4]?.ToString(),
                 Position = r[5]?.ToString(),
                 Height = r[6]?.ToString(),
-                Weight = Convert.ToInt32(r[7]),
+                Weight = (Int32.TryParse(r[7]?.ToString(), out discard)) ?  (int?)Convert.ToInt32(r[7]) : null,
                 BirthDate = DateTime.Parse(r[8].ToString()),
                 Age = Convert.ToInt32(r[9]),
                 PlayerID = Convert.ToInt32(r[12]),
