@@ -40,7 +40,9 @@ namespace NBA_Test
 
             object[] Chicago = new object[6];
             object[] Utah = new object[6];
-            object[] GoldenStates = new object[36];
+            object[] GoldenStates = new object[6];
+            object[] La = new object[6];
+
 
 
             Chicago[1] = 111;
@@ -61,10 +63,16 @@ namespace NBA_Test
             GoldenStates[4] = 1960;
             GoldenStates[5] = 1966;
 
+            La[1] = 444;
+            La[2] = "LA";
+            La[3] = "Clippers";
+            La[4] = 1949;
+            La[5] = 2018;
 
             output.ResultSets[0].RowSet.Add(Chicago.ToList());
             output.ResultSets[1].RowSet.Add(Utah.ToList());
             output.ResultSets[0].RowSet.Add(GoldenStates.ToList());
+            output.ResultSets[0].RowSet.Add(La.ToList());
 
             return output;
         }
@@ -138,7 +146,169 @@ namespace NBA_Test
         }
         private PlayerProfileRootObject MockPlayerProfile()
         {
-            return null;
+            PlayerProfileRootObject output = new PlayerProfileRootObject()
+            {
+                ResultSets = new List<ResultSet>()
+                {
+                    new ResultSet()
+                    {
+                        RowSet = new List<List<object>>()
+                    },
+                    new ResultSet()
+                    {
+                        RowSet = new List<List<object>>()
+                    }
+                }
+            };
+
+            object[] Chicago2000 = new object[27];
+            object[] Chicago2001 = new object[27];
+            object[] La2001 = new object[27];
+            object[] Total2001 = new object[27];
+            object[] La2002 = new object[27];
+            object[] CareerTotal = new object[27];
+
+            Chicago2000[1] = "2000-01";
+            Chicago2000[3] = 111;
+
+            Chicago2001[1] = "2001-02";
+            Chicago2001[3] = 111;
+
+            #region La 2001
+            La2001[1] = "2001-02";
+            La2001[3] = 444;
+                 
+            La2001[6] = 1;
+            La2001[7] = 1;
+            La2001[8] = 1;
+                     
+            La2001[9] = 1;
+            La2001[10] = 1;
+            La2001[11] = 1.0;
+                     
+            La2001[12] = 1;
+            La2001[13] = 1;
+            La2001[14] = 1.0;
+                     
+            La2001[15] = 1;
+            La2001[16] = 1;
+            La2001[17] = 1.0;
+                 
+            La2001[18] = 1;
+            La2001[19] = 1;
+            La2001[20] = 1;
+                 
+            La2001[26] = 1;
+            La2001[21] = 1;
+            La2001[22] = 1;
+            La2001[23] = 1;
+            La2001[24] = 1;
+            La2001[25] = 1;
+            #endregion
+
+            #region Total 2001
+            Total2001[1] = "2001-02";
+            Total2001[3] = 0;
+
+            Total2001[6] = 1;
+            Total2001[7] = 1;
+            Total2001[8] = 1;
+
+            Total2001[9] = 1;
+            Total2001[10] = 1;
+            Total2001[11] = 1.0;
+                          
+            Total2001[12] = 1;
+            Total2001[13] = 1;
+            Total2001[14] = 1.0;
+                          
+            Total2001[15] = 1;
+            Total2001[16] = 1;
+            Total2001[17] = 1.0;
+                          
+            Total2001[18] = 1;
+            Total2001[19] = 1;
+            Total2001[20] = 1;
+                          
+            Total2001[26] = 1;
+            Total2001[21] = 1;
+            Total2001[22] = 1;
+            Total2001[23] = 1;
+            Total2001[24] = 1;
+            Total2001[25] = 1;
+            #endregion
+
+            #region La 2002
+            La2002[1] = "2002-03";
+            La2002[3] = 444;
+
+            La2002[6] = 2;
+            La2002[7] = 2;
+            La2002[8] = 2;
+
+            La2002[9] = 2;
+            La2002[10] = 2;
+            La2002[11] = 1.0;
+
+            La2002[12] = 2;
+            La2002[13] = 2;
+            La2002[14] = 1.0;
+
+            La2002[15] = 2;
+            La2002[16] = 2;
+            La2002[17] = 1.0;
+                         
+            La2002[18] = 2;
+            La2002[19] = 2;
+            La2002[20] = 2;
+                         
+            La2002[26] = 2;
+            La2002[21] = 2;
+            La2002[22] = 2;
+            La2002[23] = 2;
+            La2002[24] = 2;
+            La2002[25] = 2;
+            #endregion
+
+            #region Career Total
+
+            CareerTotal[3] = 3;
+            CareerTotal[4] = 3;
+            CareerTotal[5] = 3;
+
+            CareerTotal[6] = 3;
+            CareerTotal[7] = 3;
+            CareerTotal[8] = 1.0;
+
+            CareerTotal[9] = 3;
+            CareerTotal[10] = 3;
+            CareerTotal[11] = 1.0;
+
+            CareerTotal[12] = 3;
+            CareerTotal[13] = 3;
+            CareerTotal[14] = 1.0;
+
+            CareerTotal[15] = 3;
+            CareerTotal[16] = 3;
+            CareerTotal[17] = 3;
+
+            CareerTotal[23] = 3;
+            CareerTotal[18] = 3;
+            CareerTotal[19] = 3;
+            CareerTotal[20] = 3;
+            CareerTotal[21] = 3;
+            CareerTotal[22] = 3;
+            #endregion
+
+            output.ResultSets[0].RowSet.Add(Chicago2000.ToList());
+            output.ResultSets[0].RowSet.Add(Chicago2001.ToList());
+            output.ResultSets[0].RowSet.Add(La2001.ToList());
+            output.ResultSets[0].RowSet.Add(Total2001.ToList());
+            output.ResultSets[0].RowSet.Add(La2002.ToList());
+
+            output.ResultSets[1].RowSet.Add(CareerTotal.ToList());
+
+            return output;
         }
 
     }

@@ -67,6 +67,7 @@
     <Compile Include="Extractors_Test.cs" />
     <Compile Include="JsonReader_Test.cs" />
     <Compile Include="MockData.cs" />
+    <Compile Include="Models\PlayerProfile_Test.cs" />
     <Compile Include="Models\TeamData_Test.cs" />
     <Compile Include="Models\TeamMembers_Test.cs" />
     <Compile Include="Models\TeamStats_Test.cs" />
